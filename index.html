@@ -7,7 +7,7 @@
 <meta name="description" content="Fachärztin für Innere Medizin mit Spezialisierung auf Endokrinologie, Diabetologie und Kardiologie. Ordination in Vöcklabruck. Alle Kassen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* ─── Reset & Base ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,14 +19,20 @@ html { scroll-behavior: smooth; }
   --teal: #0B8A7E;
   --teal-light: #12A99B;
   --red: #C0392B;
-  --cream: #FEFAF5;
-  --cream-dark: #F2EDE4;
-  --bg-light: #F0F7FC;
-  --white: #FFFFFF;
+  --cream: #FAF5EC;
+  --cream-dark: #F0E8D8;
+  --parchment: #F5EDD6;
+  --parchment-dark: #E8D9B8;
+  --amber: #B8860B;
+  --amber-light: #D4A017;
+  --sepia: #5C3D1E;
+  --bg-light: #EDF4F9;
+  --white: #FDFBF7;
   --text-dark: #1A2F40;
   --text-mid: #3D5A70;
   --text-soft: #6B8A9E;
   --border: rgba(13,110,160,0.12);
+  --border-retro: rgba(184,134,11,0.25);
   --shadow-sm: 0 2px 12px rgba(10,46,74,0.08);
   --shadow-md: 0 8px 32px rgba(10,46,74,0.12);
   --shadow-lg: 0 20px 60px rgba(10,46,74,0.16);
@@ -42,6 +48,7 @@ body {
   color: var(--text-dark);
   overflow-x: hidden;
   line-height: 1.65;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, h4 { font-family: 'Lora', serif; line-height: 1.25; }
@@ -896,6 +903,335 @@ section { position: relative; }
   .stats-bar-inner { grid-template-columns: 1fr; }
   .stat-item { border-right: none !important; }
 }
+
+/* ════════════════════════════════════════
+   RETRO MEDICAL TOUCHES
+   ════════════════════════════════════════ */
+
+/* Retro typewriter font utility */
+.retro-label {
+  font-family: 'Special Elite', cursive;
+  letter-spacing: 1.5px;
+}
+.mono-label {
+  font-family: 'Courier Prime', monospace;
+}
+
+/* Override section labels to use Special Elite */
+.section-label {
+  font-family: 'Special Elite', cursive;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+}
+
+/* ── Hero retro overlay ── */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,8,4,0.18) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-inner { z-index: 2; }
+.ekg-container { z-index: 1; }
+
+/* Rx symbol in hero */
+.hero-rx {
+  position: absolute;
+  top: calc(var(--nav-h) + 20px);
+  right: 30px;
+  font-family: 'Special Elite', cursive;
+  font-size: 96px;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none;
+  line-height: 1;
+  z-index: 1;
+  user-select: none;
+}
+
+/* Retro hero badge style */
+.hero-badge {
+  border-radius: 4px !important;
+  border: 1px solid rgba(212,160,23,0.5) !important;
+  background: rgba(184,134,11,0.12) !important;
+}
+.hero-badge-text { font-family: 'Special Elite', cursive; letter-spacing: 1px; }
+
+/* Hero title retro line under subtitle */
+.hero-subtitle {
+  padding-bottom: 28px;
+  border-bottom: 1px dashed rgba(255,255,255,0.2);
+}
+
+/* ── Stats bar retro ── */
+.stats-bar {
+  background: var(--parchment) !important;
+  border-top: 2px solid var(--navy);
+  border-bottom: 2px solid var(--navy);
+  position: relative;
+}
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  top: 4px; bottom: 4px; left: 0; right: 0;
+  border-top: 1px solid rgba(10,46,74,0.2);
+  border-bottom: 1px solid rgba(10,46,74,0.2);
+  pointer-events: none;
+}
+.stat-item { border-right-color: rgba(10,46,74,0.15) !important; }
+.stat-value { font-family: 'Courier Prime', monospace !important; letter-spacing: -1px; }
+.stat-label { font-family: 'Special Elite', cursive; font-size: 11px; letter-spacing: 1px; }
+
+/* ── About section retro ── */
+.about-section { background: var(--parchment) !important; }
+.about-portrait {
+  background: linear-gradient(145deg, var(--parchment-dark), #D6C9A8) !important;
+  border: 2px solid var(--border-retro) !important;
+  border-radius: var(--r-sm) !important;
+  position: relative;
+}
+/* Double-frame effect on portrait */
+.about-portrait::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(184,134,11,0.3);
+  border-radius: 4px;
+  pointer-events: none;
+}
+/* Corner ornaments */
+.about-portrait::after {
+  content: '+';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  color: rgba(184,134,11,0.4);
+  line-height: 1;
+}
+
+.about-highlight {
+  border-left: 4px solid var(--amber) !important;
+  background: rgba(184,134,11,0.06) !important;
+  font-family: 'Lora', serif !important;
+  position: relative;
+}
+.about-highlight::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px; left: 16px;
+  font-size: 60px;
+  font-family: 'Lora', serif;
+  color: rgba(184,134,11,0.25);
+  line-height: 1;
+}
+
+.about-qual-dot {
+  background: var(--amber) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 2px !important;
+}
+
+/* ── Services section retro ── */
+.services-section { background: var(--cream) !important; }
+.service-card {
+  background: var(--white) !important;
+  border-color: rgba(184,134,11,0.18) !important;
+  border-radius: var(--r-sm) !important;
+  position: relative;
+}
+/* Top double rule */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 6px,
+    var(--border-retro) 6px,
+    var(--border-retro) 7px
+  );
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+}
+.service-card::after {
+  background: linear-gradient(90deg, var(--amber), var(--teal)) !important;
+  height: 2px !important;
+}
+.service-card-icon {
+  border-radius: 4px !important;
+  border: 1px dashed rgba(184,134,11,0.3);
+}
+.service-card h3 { font-family: 'Lora', serif; }
+.service-tag {
+  font-family: 'Courier Prime', monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 0.8px !important;
+  border-radius: 2px !important;
+  border: 1px solid rgba(13,110,160,0.2) !important;
+}
+
+/* ── Quals section retro (stamp aesthetic) ── */
+.quals-section {
+  background: linear-gradient(160deg, #081E30 0%, #0A2E4A 100%) !important;
+  position: relative;
+}
+.quals-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 39px,
+    rgba(255,255,255,0.02) 39px,
+    rgba(255,255,255,0.02) 40px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 39px,
+    rgba(255,255,255,0.02) 39px,
+    rgba(255,255,255,0.02) 40px
+  );
+  pointer-events: none;
+}
+.qual-card {
+  border-radius: 4px !important;
+  border: 1px solid rgba(212,160,23,0.25) !important;
+  position: relative;
+}
+/* Stamp double-border */
+.qual-card::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgba(212,160,23,0.15);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.qual-card::before {
+  background: linear-gradient(90deg, var(--amber-light), var(--teal-light)) !important;
+}
+.qual-card h4 { font-family: 'Special Elite', cursive !important; letter-spacing: 1px; }
+.qual-card p { font-family: 'Courier Prime', monospace !important; font-size: 12px !important; line-height: 1.7 !important; }
+.qual-card-icon { border-radius: 4px !important; border-color: rgba(212,160,23,0.3) !important; }
+
+/* ── Hours section retro (ECG paper) ── */
+.hours-section {
+  background: var(--white) !important;
+  position: relative;
+}
+.hours-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11,138,126,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,138,126,0.04) 1px, transparent 1px),
+    linear-gradient(rgba(11,138,126,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,138,126,0.015) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  pointer-events: none;
+}
+.hours-row { border-bottom-style: dashed !important; border-bottom-color: rgba(13,110,160,0.15) !important; }
+.hours-row:first-child { border-top-style: solid !important; border-top-color: var(--navy) !important; border-top-width: 2px !important; }
+.hours-day { font-family: 'Special Elite', cursive; font-size: 14px !important; letter-spacing: 0.5px; }
+.hours-time { font-family: 'Courier Prime', monospace !important; }
+.hours-badge { border-radius: 2px !important; font-family: 'Courier Prime', monospace !important; }
+.hours-info {
+  background: var(--parchment) !important;
+  border: 1px solid var(--border-retro) !important;
+  border-radius: var(--r-sm) !important;
+  position: relative;
+}
+.hours-info::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(184,134,11,0.2);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.hours-info h3 { font-family: 'Special Elite', cursive; letter-spacing: 1px; }
+.hours-info-label { font-family: 'Special Elite', cursive; }
+.hours-info-value { font-family: 'Courier Prime', monospace !important; }
+.hours-cta {
+  border-radius: 4px !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 13px !important;
+}
+
+/* ── Contact section retro ── */
+.contact-section { background: var(--cream) !important; }
+.contact-card {
+  border-color: var(--border-retro) !important;
+  border-radius: var(--r-sm) !important;
+  background: var(--parchment) !important;
+}
+.contact-card:hover { border-color: var(--amber) !important; }
+.contact-card-label { font-family: 'Special Elite', cursive !important; }
+.contact-card-value { font-family: 'Courier Prime', monospace !important; }
+.contact-form {
+  border-color: var(--border-retro) !important;
+  border-radius: var(--r-sm) !important;
+  background: var(--parchment) !important;
+  position: relative;
+}
+.contact-form::before {
+  content: 'Rp.';
+  position: absolute;
+  top: 20px; right: 28px;
+  font-family: 'Special Elite', cursive;
+  font-size: 22px;
+  color: rgba(184,134,11,0.3);
+  letter-spacing: 2px;
+}
+.contact-form h3 { font-family: 'Special Elite', cursive !important; letter-spacing: 1px; }
+.form-label { font-family: 'Courier Prime', monospace !important; font-size: 12px !important; letter-spacing: 1px; text-transform: uppercase; }
+.form-input, .form-textarea, .form-select {
+  background: rgba(255,255,255,0.7) !important;
+  border-color: rgba(184,134,11,0.25) !important;
+  border-radius: 4px !important;
+  font-family: 'Courier Prime', monospace !important;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--amber) !important;
+  box-shadow: 0 0 0 3px rgba(184,134,11,0.1) !important;
+}
+.form-submit {
+  border-radius: 4px !important;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 13px !important;
+  background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+}
+.form-submit:hover { box-shadow: 0 8px 24px rgba(10,46,74,0.4) !important; }
+
+/* ── Footer retro ── */
+.footer { background: #060F18 !important; }
+.footer-brand h3 { font-family: 'Special Elite', cursive !important; letter-spacing: 1px; }
+.footer-col h4 { font-family: 'Special Elite', cursive !important; letter-spacing: 1px; }
+.footer-links a { font-family: 'Courier Prime', monospace; }
+
+/* ── Nav retro ── */
+.nav-logo-name { font-family: 'Special Elite', cursive !important; letter-spacing: 0.5px; font-size: 14px !important; }
+
+/* ── Retro corner ornament for sections ── */
+.retro-corner {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+}
+.retro-corner.tl { top: 20px; left: 20px; }
+.retro-corner.tr { top: 20px; right: 20px; transform: scaleX(-1); }
+.retro-corner.bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
+.retro-corner.br { bottom: 20px; right: 20px; transform: scale(-1); }
 </style>
 </head>
 <body>
@@ -960,6 +1296,8 @@ section { position: relative; }
       <rect width="100%" height="100%" fill="url(#mol)"/>
     </svg>
   </div>
+
+  <div class="hero-rx" aria-hidden="true">Rx</div>
 
   <!-- Animated EKG -->
   <div class="ekg-container" aria-hidden="true">
@@ -1086,6 +1424,14 @@ section { position: relative; }
 
 <!-- ÜBER MICH -->
 <section class="about-section" id="ueber">
+  <svg class="retro-corner tl" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#0A2E4A" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#0A2E4A" stroke-width="1" stroke-linecap="square"/>
+  </svg>
+  <svg class="retro-corner tr" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#0A2E4A" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#0A2E4A" stroke-width="1" stroke-linecap="square"/>
+  </svg>
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-visual reveal">
@@ -1261,6 +1607,22 @@ section { position: relative; }
 
 <!-- QUALIFIKATIONEN -->
 <section class="quals-section" id="qualifikationen">
+  <svg class="retro-corner tl" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:0.15;">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#D4A017" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#D4A017" stroke-width="1" stroke-linecap="square"/>
+  </svg>
+  <svg class="retro-corner tr" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:0.15;">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#D4A017" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#D4A017" stroke-width="1" stroke-linecap="square"/>
+  </svg>
+  <svg class="retro-corner bl" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:0.15;">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#D4A017" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#D4A017" stroke-width="1" stroke-linecap="square"/>
+  </svg>
+  <svg class="retro-corner br" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:0.15;">
+    <path d="M2 2 L2 22 M2 2 L22 2" stroke="#D4A017" stroke-width="2.5" stroke-linecap="square"/>
+    <path d="M8 8 L8 16 M8 8 L16 8" stroke="#D4A017" stroke-width="1" stroke-linecap="square"/>
+  </svg>
   <div class="section-inner">
     <div class="section-label reveal">Diplome &amp; Qualifikationen</div>
     <h2 class="section-title reveal">Zertifizierte Expertise<br>auf höchstem Niveau</h2>
