@@ -75,9 +75,10 @@ h1, h2, h3, h4 { font-family: 'Lora', serif; line-height: 1.25; }
   justify-content: space-between;
 }
 .nav.scrolled {
-  background: rgba(254,250,245,0.96);
+  background: rgba(245,237,214,0.97);
   backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  box-shadow: 0 2px 20px rgba(10,46,74,0.1);
 }
 .nav-logo {
   display: flex;
@@ -173,14 +174,24 @@ h1, h2, h3, h4 { font-family: 'Lora', serif; line-height: 1.25; }
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--navy) 0%, #0D4A6E 50%, #0A3D5C 100%);
+  background: linear-gradient(160deg, #0C1820 0%, #101E2C 55%, #0A1828 100%);
   padding-top: var(--nav-h);
+}
+/* Warm amber glow — ties hero to the parchment/amber palette */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 55%, rgba(180,120,14,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 85% 15%, rgba(11,90,130,0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-bg-pattern {
   position: absolute;
   inset: 0;
-  opacity: 0.06;
+  opacity: 0.04;
   pointer-events: none;
   overflow: hidden;
 }
@@ -849,7 +860,7 @@ section { position: relative; }
   position: fixed;
   top: var(--nav-h);
   left: 0; right: 0;
-  background: rgba(254,250,245,0.98);
+  background: rgba(245,237,214,0.98);
   backdrop-filter: blur(20px);
   z-index: 99;
   padding: 20px 24px;
@@ -909,13 +920,8 @@ section { position: relative; }
    ════════════════════════════════════════ */
 
 /* Retro typewriter font utility */
-.retro-label {
-  font-family: 'Special Elite', cursive;
-  letter-spacing: 1.5px;
-}
-.mono-label {
-  font-family: 'Courier Prime', monospace;
-}
+.retro-label { font-family: 'Special Elite', cursive; letter-spacing: 1.5px; }
+.mono-label  { font-family: 'Courier Prime', monospace; }
 
 /* Override section labels to use Special Elite */
 .section-label {
@@ -929,12 +935,13 @@ section { position: relative; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,8,4,0.18) 0%, transparent 60%);
+  background: linear-gradient(180deg, rgba(12,8,4,0.3) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
 }
 .hero-inner { z-index: 2; }
 .ekg-container { z-index: 1; }
+.hero-glow { z-index: 0; }
 
 /* Rx symbol in hero */
 .hero-rx {
@@ -942,27 +949,81 @@ section { position: relative; }
   top: calc(var(--nav-h) + 20px);
   right: 30px;
   font-family: 'Special Elite', cursive;
-  font-size: 96px;
-  color: rgba(255,255,255,0.04);
+  font-size: 110px;
+  color: rgba(212,160,23,0.06);
   pointer-events: none;
   line-height: 1;
   z-index: 1;
   user-select: none;
 }
 
+/* Hero title: amber gradient instead of ice-blue */
+.hero-title span {
+  background: linear-gradient(90deg, #D4A017, #E8C050) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
 /* Retro hero badge style */
 .hero-badge {
-  border-radius: 4px !important;
-  border: 1px solid rgba(212,160,23,0.5) !important;
-  background: rgba(184,134,11,0.12) !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(212,160,23,0.45) !important;
+  background: rgba(184,134,11,0.1) !important;
 }
 .hero-badge-text { font-family: 'Special Elite', cursive; letter-spacing: 1px; }
 
-/* Hero title retro line under subtitle */
+/* Hero specialty pills → vintage labels */
+.hero-specialty {
+  border-radius: 3px !important;
+  border-color: rgba(212,160,23,0.3) !important;
+  background: rgba(184,134,11,0.08) !important;
+  font-family: 'Special Elite', cursive !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Hero subtitle retro line */
 .hero-subtitle {
   padding-bottom: 28px;
-  border-bottom: 1px dashed rgba(255,255,255,0.2);
+  border-bottom: 1px dashed rgba(212,160,23,0.25);
+  font-family: 'Courier Prime', monospace !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
 }
+
+/* Hero card: vintage dossier instead of glassmorphism */
+.hero-card {
+  background: rgba(20,30,20,0.55) !important;
+  border: 1px solid rgba(212,160,23,0.3) !important;
+  border-radius: 4px !important;
+  position: relative;
+}
+.hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgba(212,160,23,0.12);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.hero-card-name { font-family: 'Special Elite', cursive !important; letter-spacing: 0.5px; }
+.hero-card-role { font-family: 'Courier Prime', monospace !important; }
+.hero-card-day-name { font-family: 'Courier Prime', monospace !important; }
+.hero-card-day-time { font-family: 'Courier Prime', monospace !important; }
+.hero-card-contact-item { font-family: 'Courier Prime', monospace !important; font-size: 13px !important; }
+.hero-card-header { border-bottom-color: rgba(212,160,23,0.2) !important; }
+.hero-card-contact { border-top-color: rgba(212,160,23,0.2) !important; }
+.hero-card-day.today .hero-card-day-name { color: #D4A017 !important; }
+.hero-card-day.today .hero-card-day-time { color: #D4A017 !important; }
+
+/* Buttons: square/retro everywhere — no pill shapes */
+.btn-primary  { border-radius: 5px !important; background: linear-gradient(135deg, #0A2E4A, #0D5A8A) !important; letter-spacing: 0.5px; }
+.btn-secondary { border-radius: 5px !important; border-color: rgba(212,160,23,0.45) !important; }
+.btn-primary:hover  { box-shadow: 0 10px 32px rgba(10,46,74,0.5) !important; }
+.nav-cta { border-radius: 4px !important; }
+
+/* EKG line: amber instead of ice-blue */
+.ekg-amber { stroke: rgba(212,160,23,0.55) !important; }
 
 /* ── Stats bar retro ── */
 .stats-bar {
@@ -1279,31 +1340,26 @@ section { position: relative; }
   <div class="hero-bg-pattern" aria-hidden="true">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <pattern id="mol" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
-          <circle cx="60" cy="52" r="3" fill="white"/>
-          <circle cx="20" cy="20" r="2" fill="white"/>
-          <circle cx="100" cy="20" r="2" fill="white"/>
-          <circle cx="20" cy="84" r="2" fill="white"/>
-          <circle cx="100" cy="84" r="2" fill="white"/>
-          <line x1="60" y1="52" x2="20" y2="20" stroke="white" stroke-width="0.8"/>
-          <line x1="60" y1="52" x2="100" y2="20" stroke="white" stroke-width="0.8"/>
-          <line x1="60" y1="52" x2="20" y2="84" stroke="white" stroke-width="0.8"/>
-          <line x1="60" y1="52" x2="100" y2="84" stroke="white" stroke-width="0.8"/>
-          <line x1="20" y1="20" x2="100" y2="20" stroke="white" stroke-width="0.4" stroke-dasharray="4 4"/>
-          <line x1="20" y1="84" x2="100" y2="84" stroke="white" stroke-width="0.4" stroke-dasharray="4 4"/>
+        <pattern id="grid-main" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,160,23,0.12)" stroke-width="0.6"/>
+        </pattern>
+        <pattern id="grid-sub" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(212,160,23,0.05)" stroke-width="0.4"/>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#mol)"/>
+      <rect width="100%" height="100%" fill="url(#grid-sub)"/>
+      <rect width="100%" height="100%" fill="url(#grid-main)"/>
     </svg>
   </div>
 
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-rx" aria-hidden="true">Rx</div>
 
   <!-- Animated EKG -->
   <div class="ekg-container" aria-hidden="true">
     <svg class="ekg-svg" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
       <path d="M0,60 L80,60 L100,60 L110,60 L115,35 L120,80 L125,10 L130,100 L135,58 L145,60 L225,60 L245,60 L255,60 L260,35 L265,80 L270,10 L275,100 L280,58 L290,60 L370,60 L390,60 L400,60 L405,35 L410,80 L415,10 L420,100 L425,58 L435,60 L515,60 L535,60 L545,60 L550,35 L555,80 L560,10 L565,100 L570,58 L580,60 L660,60 L680,60 L690,60 L695,35 L700,80 L705,10 L710,100 L715,58 L725,60 L805,60 L825,60 L835,60 L840,35 L845,80 L850,10 L855,100 L860,58 L870,60 L950,60 L970,60 L980,60 L985,35 L990,80 L995,10 L1000,100 L1005,58 L1015,60 L1095,60 L1115,60 L1125,60 L1130,35 L1135,80 L1140,10 L1145,100 L1150,58 L1160,60 L1200,60"
-        stroke="rgba(125,211,247,0.7)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        stroke="rgba(212,160,23,0.5)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 
