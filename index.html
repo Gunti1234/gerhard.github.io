@@ -1623,9 +1623,9 @@
 
   <div class="hero-body">
     <div class="hero-left">
-      <div class="hero-kicker">
-        <span class="hero-kicker-dot"></span>
-        Praxis geöffnet · Alle Kassen willkommen
+      <div class="hero-kicker" id="heroBadge">
+        <span class="hero-kicker-dot" id="heroBadgeDot"></span>
+        <span id="heroBadgeText">Alle Kassen willkommen</span>
       </div>
       <h1 class="hero-h1">Dr. Anita<br><em>Guggenberger</em></h1>
       <p class="hero-h2">Fachärztin für Innere Medizin</p>
@@ -2247,6 +2247,15 @@
   const isOpen = [1,2,3,5].includes(day);
 
   document.getElementById('todayHours').textContent = HOURS[day] ?? 'Heute geschlossen';
+
+  // Hero badge – dynamisch
+  document.getElementById('heroBadgeText').textContent =
+    (isOpen ? 'Praxis geöffnet' : 'Heute geschlossen') + ' · Alle Kassen willkommen';
+  const dot = document.getElementById('heroBadgeDot');
+  if (!isOpen) {
+    dot.style.background = '#ff7070';
+    dot.style.animationDuration = '1.2s';
+  }
 
   const statusEl = document.getElementById('openStatus');
   const statusText = document.getElementById('openStatusText');
