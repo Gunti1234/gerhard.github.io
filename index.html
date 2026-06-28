@@ -1,73 +1,1731 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G E R H A R D</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Anita Guggenberger – Fachärztin für Innere Medizin | Vöcklabruck</title>
+  <meta name="description" content="Dr. Anita Guggenberger – Fachärztin für Innere Medizin, Endokrinologie, Diabetologie und kardiologische Spezifizierung in Vöcklabruck. Alle Kassen. Jetzt Termin vereinbaren." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal-dark:   #1a5c5a;
+      --teal:        #2a8080;
+      --teal-mid:    #3a9e9c;
+      --teal-light:  #6ec4c2;
+      --teal-pale:   #e8f6f6;
+      --gold:        #c8a96e;
+      --gold-light:  #f0e0bb;
+      --white:       #ffffff;
+      --off-white:   #f8fafa;
+      --text-dark:   #1c2b2b;
+      --text-mid:    #3d5555;
+      --text-light:  #6b8888;
+      --border:      #d4e8e8;
+      --shadow-sm:   0 2px 12px rgba(26,92,90,0.08);
+      --shadow-md:   0 8px 32px rgba(26,92,90,0.14);
+      --shadow-lg:   0 20px 60px rgba(26,92,90,0.18);
+      --radius:      14px;
+      --radius-lg:   24px;
+      --transition:  all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(210,232,232,0.6);
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      line-height: 1.2;
+    }
+
+    .nav-logo-title {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+      background: var(--teal-pale);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid)) !important;
+      color: white !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(42,128,128,0.35) !important;
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal)) !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--teal-dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0d3d3c 0%, #1a5c5a 35%, #2a8080 65%, #3a9e9c 100%);
+    }
+
+    .hero-bg-shapes {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-bg-shapes::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 70%;
+      height: 130%;
+      background: radial-gradient(ellipse at center, rgba(110,196,194,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-bg-shapes::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      left: -5%;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(200,169,110,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      overflow: hidden;
+    }
+
+    .hero-wave svg {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 0 160px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-specialty {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--teal-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(200,169,110,0.4);
+    }
+
+    .btn-primary:hover {
+      background: #d4b67a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,169,110,0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 13px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-card-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .hero-card-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .hero-card-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+    }
+
+    .hero-card-value {
+      font-size: 0.9rem;
+      color: white;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* ─── SECTIONS ────────────────────────────────────────── */
+    section {
+      padding: 90px 5%;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-pale);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .section-title span { color: var(--teal); }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    #ueber-mich {
+      background: var(--off-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card-main {
+      background: linear-gradient(160deg, var(--teal-dark), var(--teal));
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .about-card-main::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -20px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+
+    .about-card-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: rgba(255,255,255,0.2);
+      line-height: 0;
+      vertical-align: -1.5rem;
+      margin-right: 4px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .about-card-name {
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card-role {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: 32px;
+      background: var(--gold);
+      color: var(--teal-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .about-stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .about-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .about-highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    .about-highlight-item::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--teal-mid);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── LEISTUNGEN ──────────────────────────────────────── */
+    #leistungen {
+      background: white;
+    }
+
+    .leistungen-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .leistungen-header .section-lead {
+      margin: 0 auto;
+    }
+
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .leistung-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .leistung-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .leistung-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      border-color: var(--teal-light);
+      background: white;
+    }
+
+    .leistung-card:hover::before {
+      opacity: 1;
+    }
+
+    .leistung-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--teal-pale), #c6eaea);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .leistung-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .leistung-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    .leistung-tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: var(--teal);
+      background: var(--teal-pale);
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─── KASSEN ──────────────────────────────────────────── */
+    .kassen-banner {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      border-radius: var(--radius-lg);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .kassen-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .kassen-text p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+    }
+
+    .kassen-badge {
+      background: var(--gold);
+      color: var(--teal-dark);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    /* ─── ÖFFNUNGSZEITEN ──────────────────────────────────── */
+    #oeffnungszeiten {
+      background: var(--off-white);
+    }
+
+    .stunden-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .stunden-table {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stunden-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .stunden-row:last-child {
+      border-bottom: none;
+    }
+
+    .stunden-row:hover {
+      background: var(--teal-pale);
+    }
+
+    .stunden-row.today {
+      background: var(--teal-pale);
+      border-left: 3px solid var(--teal);
+    }
+
+    .stunden-day {
+      font-weight: 500;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .stunden-time {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      text-align: right;
+    }
+
+    .stunden-closed {
+      color: #d9534f;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    .stunden-notice {
+      margin-top: 20px;
+      background: #fff8e6;
+      border: 1px solid #f0d78a;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .stunden-notice-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .stunden-notice p {
+      font-size: 0.88rem;
+      color: #7a5f1a;
+      line-height: 1.5;
+    }
+
+    .stunden-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stunden-info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stunden-info-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stunden-info-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .stunden-info-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 4px;
+    }
+
+    .stunden-info-card a:hover {
+      color: var(--teal-dark);
+    }
+
+    /* ─── KONTAKT ─────────────────────────────────────────── */
+    #kontakt {
+      background: white;
+    }
+
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .kontakt-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .kontakt-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .kontakt-item-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--teal-pale);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+
+    .kontakt-item-content label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .kontakt-item-content p, .kontakt-item-content a {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .kontakt-item-content a {
+      color: var(--teal);
+      font-weight: 500;
+    }
+
+    .kontakt-item-content a:hover {
+      color: var(--teal-dark);
+    }
+
+    .kontakt-map {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 320px;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .kontakt-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Kontaktformular */
+    .kontakt-form-section {
+      margin-top: 60px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+    }
+
+    .kontakt-form-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .kontakt-form-section p {
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      letter-spacing: 0.03em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      outline: none;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 0 3px rgba(110,196,194,0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+    }
+
+    .btn-form {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 16px rgba(42,128,128,0.3);
+    }
+
+    .btn-form:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(42,128,128,0.4);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 5% 32px;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-top: 12px;
+      max-width: 280px;
+    }
+
+    .footer-brand .nav-logo-name {
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .footer-brand .nav-logo-title {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-col h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--teal-light);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--teal-light);
+    }
+
+    /* ─── SCROLL TO TOP ───────────────────────────────────── */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1.1rem;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in:nth-child(2) { transition-delay: 0.1s; }
+    .fade-in:nth-child(3) { transition-delay: 0.2s; }
+    .fade-in:nth-child(4) { transition-delay: 0.3s; }
+    .fade-in:nth-child(5) { transition-delay: 0.4s; }
+    .fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .stunden-grid,
+      .kontakt-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .leistungen-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 64px 5%; }
+
+      .nav-links { display: none; }
+
+      .nav-hamburger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 5% 24px;
+        box-shadow: var(--shadow-md);
+        gap: 4px;
+      }
+
+      .leistungen-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: 1;
+      }
+
+      .kassen-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .kontakt-form-section {
+        padding: 32px 24px;
+      }
+
+      .hero-content {
+        padding: 100px 0 140px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1 style="text-align:center; font-family:'Josefin Sans', sans-serif; font-size: 250%; ";>Gerhard <br> Untersperger</h1>
 
-     <hr style="border-top: 3px solid #bbb; border-radius: 3px;"> 
+<!-- ═══ NAV ═════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Dr. Anita Guggenberger</span>
+      <span class="nav-logo-title">Fachärztin für Innere Medizin</span>
+    </div>
+  </a>
 
-    <img src="https://www.salzkammergut-rundblick.at/files/news/2018/07/43619_2_thumb.jpg" alt="Gerhard Untersperger" style="display: block; margin-left: auto; margin-right: auto; width: 20%;">
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#ueber-mich">Über mich</a></li>
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="tel:0767233544" class="nav-cta">📞 Termin vereinbaren</a></li>
+  </ul>
 
-    <br style="height:500px;">
+  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <a href="https://www.linkedin.com/in/gerhard-untersperger-b625281ba" class="fa fa-linkedin"></a>
-  <a href="https://instagram.com/gerhard_16_?igshid=YmMyMTA2M2Y=" class="fa fa-instagram"></a>
-  <a href="https://t.snapchat.com/m2ZcYWCg" class="fa fa-snapchat-ghost"></a>
-    <!-- Buttons -->
-    <style>
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-}
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg-shapes"></div>
 
-.fa:hover {                                     /* Button darüberschwebeeffekt */
-    opacity: 0.9;
-}
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Praxis geöffnet · Alle Kassen willkommen
+      </div>
+      <h1 class="hero-title">
+        Dr. Anita<br><span>Guggenberger</span>
+      </h1>
+      <p class="hero-subtitle">Fachärztin für Innere Medizin</p>
+      <p class="hero-specialty">Endokrinologie · Diabetologie · Kardiologische Spezifizierung</p>
+      <div class="hero-actions">
+        <a href="tel:0767233544" class="btn-primary">
+          📞 Jetzt anrufen
+        </a>
+        <a href="#leistungen" class="btn-secondary">
+          Leistungen entdecken →
+        </a>
+      </div>
+    </div>
 
-.fa-linkedin {
-  background: #007bb5;
-  color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+    <div class="hero-card">
+      <div class="hero-card-item">
+        <div class="hero-card-icon">📍</div>
+        <div>
+          <div class="hero-card-label">Adresse</div>
+          <div class="hero-card-value">Robert-Kunz-Straße 11<br>4840 Vöcklabruck</div>
+        </div>
+      </div>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">📞</div>
+        <div>
+          <div class="hero-card-label">Telefon</div>
+          <div class="hero-card-value">07672 33 5 44</div>
+        </div>
+      </div>
+      <div class="hero-card-item">
+        <div class="hero-card-icon">🕐</div>
+        <div>
+          <div class="hero-card-label">Heute</div>
+          <div class="hero-card-value" id="todayHours">–</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-.fa-instagram {
-  background: #125688;
-  color: white;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#f8fafa"/>
+    </svg>
+  </div>
+</section>
 
-.fa-snapchat-ghost {
-  background: #fffc00;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+<!-- ═══ ÜBER MICH ══════════════════════════════════════════════ -->
+<section id="ueber-mich">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <p class="about-card-quote">
+            Ihre Gesundheit ist mein Auftrag – persönlich, kompetent und mit Herz.
+          </p>
+          <div class="about-card-name">Dr. Anita Guggenberger</div>
+          <div class="about-card-role">Fachärztin für Innere Medizin</div>
+          <div class="about-badge">✓ Alle Kassen</div>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat fade-in">
+            <div class="about-stat-num">3</div>
+            <div class="about-stat-label">Fachgebiete</div>
+          </div>
+          <div class="about-stat fade-in">
+            <div class="about-stat-num">4840</div>
+            <div class="about-stat-label">Vöcklabruck</div>
+          </div>
+          <div class="about-stat fade-in">
+            <div class="about-stat-num">9+</div>
+            <div class="about-stat-label">Std. täglich für Sie</div>
+          </div>
+          <div class="about-stat fade-in">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Kassenleistungen</div>
+          </div>
+        </div>
+      </div>
 
-    </style>
+      <div class="about-text">
+        <div class="section-tag">Über die Praxis</div>
+        <h2 class="section-title">Kompetenz & <span>Fürsorge</span> unter einem Dach</h2>
+        <p>
+          In meiner internistischen Fachpraxis in Vöcklabruck verbinde ich jahrelange medizinische Erfahrung mit einem modernen, patientenorientierten Ansatz. Mein Ziel ist es, Ihnen umfassende Diagnostik und Therapie in einer vertrauensvollen Atmosphäre zu bieten.
+        </p>
+        <p>
+          Mit Schwerpunkten in Endokrinologie, Diabetologie und kardiologischer Spezifizierung stehe ich Ihnen bei einem breiten Spektrum internistischer Erkrankungen zur Seite – einfühlsam, ganzheitlich und auf dem neuesten Stand der Medizin.
+        </p>
+        <div class="about-highlights">
+          <div class="about-highlight-item">Fachärztin für Innere Medizin mit umfassender Expertise</div>
+          <div class="about-highlight-item">Spezialisiert auf Endokrinologie & Diabetologie</div>
+          <div class="about-highlight-item">Kardiologische Spezifizierung & Vorsorge</div>
+          <div class="about-highlight-item">Alle Krankenkassen – ohne Mehrkosten</div>
+          <div class="about-highlight-item">Zentrale Lage in Vöcklabruck, Erdgeschoss</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ LEISTUNGEN ══════════════════════════════════════════════ -->
+<section id="leistungen">
+  <div class="container">
+    <div class="leistungen-header">
+      <div class="section-tag">Meine Leistungen</div>
+      <h2 class="section-title">Was ich für Sie tun kann</h2>
+      <p class="section-lead">
+        Als Internistin mit drei medizinischen Schwerpunkten biete ich Ihnen ein breites diagnostisches und therapeutisches Spektrum an einem Ort.
+      </p>
+    </div>
 
+    <div class="leistungen-grid">
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">🩺</div>
+        <h3>Innere Medizin</h3>
+        <p>Umfassende internistische Diagnostik und Therapie – von der Vorsorgeuntersuchung bis zur Behandlung chronischer Erkrankungen.</p>
+        <span class="leistung-tag">Fachschwerpunkt</span>
+      </div>
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">🧬</div>
+        <h3>Endokrinologie</h3>
+        <p>Diagnose und Behandlung von Hormonstörungen: Schilddrüse, Nebenniere, Hypophyse und weitere endokrine Erkrankungen.</p>
+        <span class="leistung-tag">Spezialisierung</span>
+      </div>
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">💉</div>
+        <h3>Diabetologie</h3>
+        <p>Individuelle Betreuung bei Typ-1 und Typ-2 Diabetes: Einstellung, Schulung, Therapieoptimierung und Langzeitbegleitung.</p>
+        <span class="leistung-tag">Spezialisierung</span>
+      </div>
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">❤️</div>
+        <h3>Kardiologie</h3>
+        <p>Kardiologische Spezifizierung: EKG, Blutdruckdiagnostik, Risikobewertung und Prävention von Herzerkrankungen.</p>
+        <span class="leistung-tag">Spezialisierung</span>
+      </div>
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">🔬</div>
+        <h3>Labordiagnostik</h3>
+        <p>Moderne Blut- und Laboruntersuchungen zur schnellen und präzisen Diagnose – direkt in der Praxis oder mit Laborpartnern.</p>
+        <span class="leistung-tag">Service</span>
+      </div>
+      <div class="leistung-card fade-in">
+        <div class="leistung-icon">📋</div>
+        <h3>Vorsorge & Check-up</h3>
+        <p>Präventive Gesundheitsuntersuchungen, Risikoscreenings und persönliche Beratung zur Erhaltung Ihrer Gesundheit.</p>
+        <span class="leistung-tag">Prävention</span>
+      </div>
+    </div>
 
+    <div class="kassen-banner fade-in">
+      <div class="kassen-text">
+        <h3>Alle Krankenkassen willkommen</h3>
+        <p>Ich behandle Patientinnen und Patienten aller österreichischen Krankenkassen ohne zusätzliche Kosten.</p>
+      </div>
+      <div class="kassen-badge">✓ Alle Kassen!</div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ ÖFFNUNGSZEITEN ══════════════════════════════════════════ -->
+<section id="oeffnungszeiten">
+  <div class="container">
+    <div class="section-tag">Wann wir für Sie da sind</div>
+    <h2 class="section-title" style="margin-bottom:48px">Öffnungszeiten</h2>
 
+    <div class="stunden-grid">
+      <div>
+        <div class="stunden-table">
+          <div class="stunden-row" id="row-mo">
+            <span class="stunden-day">Montag</span>
+            <span class="stunden-time">11:00 – 16:00 Uhr</span>
+          </div>
+          <div class="stunden-row" id="row-di">
+            <span class="stunden-day">Dienstag</span>
+            <span class="stunden-time">08:00 – 12:00<br>13:00 – 16:00 Uhr</span>
+          </div>
+          <div class="stunden-row" id="row-mi">
+            <span class="stunden-day">Mittwoch</span>
+            <span class="stunden-time">08:00 – 12:00 Uhr</span>
+          </div>
+          <div class="stunden-row" id="row-do">
+            <span class="stunden-day">Donnerstag</span>
+            <span class="stunden-closed">geschlossen</span>
+          </div>
+          <div class="stunden-row" id="row-fr">
+            <span class="stunden-day">Freitag</span>
+            <span class="stunden-time">08:00 – 12:00 Uhr</span>
+          </div>
+          <div class="stunden-row" id="row-sa">
+            <span class="stunden-day">Samstag & Sonntag</span>
+            <span class="stunden-closed">geschlossen</span>
+          </div>
+        </div>
+
+        <div class="stunden-notice">
+          <span class="stunden-notice-icon">⚠️</span>
+          <p><strong>Hinweis:</strong> Die Praxis kann an einzelnen Tagen aufgrund von Urlaub, Fortbildung oder besonderen Umständen geschlossen sein. Bitte rufen Sie vorab an oder prüfen Sie aktuelle Meldungen.</p>
+        </div>
+      </div>
+
+      <div class="stunden-info">
+        <div class="stunden-info-card">
+          <h4>📞 Telefonische Erreichbarkeit</h4>
+          <p>Für Termine und Auskünfte erreichen Sie uns während der Öffnungszeiten:</p>
+          <a href="tel:0767233544">07672 33 5 44</a>
+        </div>
+        <div class="stunden-info-card">
+          <h4>📍 Standort</h4>
+          <p>
+            Robert-Kunz-Straße 11<br>
+            4840 Vöcklabruck<br>
+            Apotheke Schöndorf / Erdgeschoss<br><br>
+            <strong>Barrierefreier Zugang</strong> im Erdgeschoss
+          </p>
+        </div>
+        <div class="stunden-info-card">
+          <h4>🚗 Anfahrt & Parken</h4>
+          <p>Die Praxis befindet sich im Erdgeschoss der Apotheke Schöndorf. Parkplätze sind in der unmittelbaren Umgebung vorhanden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ KONTAKT ════════════════════════════════════════════════ -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-tag">So finden Sie uns</div>
+    <h2 class="section-title" style="margin-bottom:48px">Kontakt & <span>Anfahrt</span></h2>
+
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <div class="kontakt-item fade-in">
+          <div class="kontakt-item-icon">📍</div>
+          <div class="kontakt-item-content">
+            <label>Adresse</label>
+            <p>Robert-Kunz-Straße 11<br>4840 Vöcklabruck<br>Apotheke Schöndorf, Erdgeschoss</p>
+          </div>
+        </div>
+        <div class="kontakt-item fade-in">
+          <div class="kontakt-item-icon">📞</div>
+          <div class="kontakt-item-content">
+            <label>Telefon</label>
+            <a href="tel:0767233544">07672 33 5 44</a>
+          </div>
+        </div>
+        <div class="kontakt-item fade-in">
+          <div class="kontakt-item-icon">🌐</div>
+          <div class="kontakt-item-content">
+            <label>Website</label>
+            <a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a>
+          </div>
+        </div>
+        <div class="kontakt-item fade-in">
+          <div class="kontakt-item-icon">🏥</div>
+          <div class="kontakt-item-content">
+            <label>Fachrichtung</label>
+            <p>Innere Medizin · Endokrinologie<br>Diabetologie · Kardiologie</p>
+          </div>
+        </div>
+        <div class="kontakt-item fade-in">
+          <div class="kontakt-item-icon">✅</div>
+          <div class="kontakt-item-content">
+            <label>Krankenkassen</label>
+            <p>Alle österreichischen Krankenkassen werden akzeptiert.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kontakt-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2671.0!2d13.6540!3d47.9960!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4774ef7da8d0d6b1%3A0x3af2dfad9c9e0bfd!2sRobert-Kunz-Stra%C3%9Fe%2011%2C%204840%20V%C3%B6cklabruck!5e0!3m2!1sde!2sat!4v1688000000000!5m2!1sde!2sat"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Praxis Dr. Guggenberger auf Google Maps"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="kontakt-form-section fade-in">
+      <h3>Termin anfragen</h3>
+      <p>Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen. Für dringende Anliegen rufen Sie bitte direkt an.</p>
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fname">Vorname *</label>
+            <input type="text" id="fname" name="fname" placeholder="Maria" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Nachname *</label>
+            <input type="text" id="lname" name="lname" placeholder="Mustermann" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefonnummer *</label>
+            <input type="tel" id="phone" name="phone" placeholder="0664 123 45 67" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail (optional)</label>
+            <input type="email" id="email" name="email" placeholder="maria@beispiel.at" />
+          </div>
+          <div class="form-group">
+            <label for="grund">Anliegen</label>
+            <select id="grund" name="grund">
+              <option value="">Bitte wählen…</option>
+              <option>Ersttermin / Neuer Patient</option>
+              <option>Folgetermin</option>
+              <option>Laborergebnisse besprechen</option>
+              <option>Überweisung / Befund</option>
+              <option>Vorsorgeuntersuchung</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="wunschtermin">Wunschtermin</label>
+            <input type="date" id="wunschtermin" name="wunschtermin" />
+          </div>
+          <div class="form-group full">
+            <label for="nachricht">Nachricht (optional)</label>
+            <textarea id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen…"></textarea>
+          </div>
+          <div class="form-group full form-submit">
+            <button type="submit" class="btn-form">
+              ✉️ Anfrage absenden
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none;">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Dr. Anita Guggenberger</span>
+          <span class="nav-logo-title">Fachärztin für Innere Medizin</span>
+        </div>
+      </a>
+      <p>Internistin mit Spezialisierung auf Endokrinologie, Diabetologie und Kardiologie in Vöcklabruck. Alle Kassen willkommen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#ueber-mich">Über mich</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+        <li><a href="#kontakt">Kontakt & Anfahrt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:0767233544">07672 33 5 44</a></li>
+        <li><a href="#">Robert-Kunz-Str. 11</a></li>
+        <li><a href="#">4840 Vöcklabruck</a></li>
+        <li><a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dr. Anita Guggenberger · Alle Rechte vorbehalten</span>
+    <div style="display:flex;gap:20px;">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" id="scrollTop" aria-label="Nach oben scrollen">↑</button>
+
+<script>
+  // ── NAV scroll effect ─────────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  const scrollTopBtn = document.getElementById('scrollTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+      scrollTopBtn.classList.add('visible');
+    } else {
+      navbar.classList.remove('scrolled');
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Hamburger menu ────────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // ── Intersection Observer (fade-in) ───────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Today's hours ─────────────────────────────────────────────
+  const hours = {
+    1: '11:00 – 16:00 Uhr',
+    2: '08:00–12:00 & 13:00–16:00',
+    3: '08:00 – 12:00 Uhr',
+    4: 'Heute geschlossen',
+    5: '08:00 – 12:00 Uhr',
+    6: 'Heute geschlossen',
+    0: 'Heute geschlossen',
+  };
+
+  const rowIds = { 1:'row-mo', 2:'row-di', 3:'row-mi', 4:'row-do', 5:'row-fr' };
+  const day = new Date().getDay();
+
+  document.getElementById('todayHours').textContent = hours[day] ?? 'Heute geschlossen';
+
+  if (rowIds[day]) {
+    document.getElementById(rowIds[day])?.classList.add('today');
+  }
+
+  // ── Form submit ───────────────────────────────────────────────
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-form');
+    btn.textContent = '✅ Anfrage gesendet – wir melden uns bald!';
+    btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+    btn.disabled = true;
+  }
+</script>
 </body>
 </html>
