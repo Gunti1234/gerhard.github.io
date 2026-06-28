@@ -777,6 +777,77 @@
       margin-bottom: 14px;
     }
 
+    /* Qualifikationen */
+    .qual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .qual-block {
+      background: var(--c-50);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px 20px;
+      transition: var(--t);
+    }
+
+    .qual-block:hover {
+      border-color: var(--c-300);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .qual-block-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--c-600);
+      margin-bottom: 14px;
+    }
+
+    .qual-ico {
+      width: 30px; height: 30px;
+      background: var(--c-100);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-600);
+    }
+
+    .qual-ico svg { width: 15px; height: 15px; }
+
+    .qual-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .qual-list li {
+      font-size: .86rem;
+      color: var(--text-2);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .qual-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px; height: 5px;
+      background: var(--c-400);
+      border-radius: 50%;
+    }
+
     /* ══════════════════════════════════════════════════
        LEISTUNGEN – BENTO GRID
     ══════════════════════════════════════════════════ */
@@ -1492,6 +1563,8 @@
       .b1,.b2,.b3,.b4,.b5,.bento-kassen { grid-column: span 1; }
       .bento-kassen { flex-direction: column; text-align: center; padding: 32px 28px; }
 
+      .qual-grid { grid-template-columns: 1fr; }
+
       .form-grid { grid-template-columns: 1fr; }
       .fg.full { grid-column: 1; }
 
@@ -1735,6 +1808,37 @@
             Barrierefreier Zugang, Erdgeschoss – zentral in Vöcklabruck
           </li>
         </ul>
+
+        <!-- Qualifikationen -->
+        <div class="qual-grid">
+          <div class="qual-block reveal">
+            <div class="qual-block-head">
+              <div class="qual-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              Fachberechtigung
+            </div>
+            <ul class="qual-list">
+              <li>Allgemeinmedizin</li>
+              <li>Innere Medizin</li>
+              <li>Endokrinologie &amp; Stoffwechselerkrankungen</li>
+            </ul>
+          </div>
+          <div class="qual-block reveal">
+            <div class="qual-block-head">
+              <div class="qual-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+              </div>
+              Diplome &amp; Zertifikate
+            </div>
+            <ul class="qual-list">
+              <li>Akupunktur</li>
+              <li>Sonographie</li>
+              <li>Notarzt</li>
+              <li>Arbeitsmedizin</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1795,14 +1899,25 @@
       </div>
 
       <!-- Card 5 -->
-      <div class="bento-card b5 reveal">
+      <div class="bento-card b3 reveal">
         <div class="bento-num">05 — Service</div>
         <div class="bento-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0H5a2 2 0 00-2 2v3a2 2 0 002 2h4m0-5h4m0 0v5a2 2 0 002 2h4a2 2 0 002-2v-3a2 2 0 00-2-2h-4m-4 0V3m4 11h2"/></svg>
         </div>
         <h3>Labordiagnostik</h3>
-        <p>Moderne Blut- und Laboruntersuchungen für schnelle, präzise Diagnosen.</p>
+        <p>Moderne Blut- und Laboruntersuchungen für schnelle, präzise Diagnosen direkt in der Praxis.</p>
         <span class="bento-pill">Service</span>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bento-card b3 reveal">
+        <div class="bento-num">06 — Zertifikat</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>Sonographie &amp; Akupunktur</h3>
+        <p>Diplomzertifiziert in Sonographie (Ultraschall) sowie komplementärmedizinischer Akupunktur.</p>
+        <span class="bento-pill">Zertifikat</span>
       </div>
 
       <!-- Kassen banner -->
