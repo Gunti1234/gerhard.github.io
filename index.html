@@ -1593,6 +1593,10 @@ footer{
 </footer>
 
 <script>
+/* ── Scroll restoration fix ─────────────────────────────── */
+if (history.scrollRestoration) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 /* ── Custom cursor ──────────────────────────────────────── */
 const co = document.getElementById('cur-out');
 const ci = document.getElementById('cur-in');
