@@ -5,76 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Anita Guggenberger – Fachärztin für Innere Medizin | Vöcklabruck</title>
   <meta name="description" content="Dr. Anita Guggenberger – Fachärztin für Innere Medizin, Endokrinologie, Diabetologie und kardiologische Spezifizierung in Vöcklabruck. Alle Kassen. Jetzt Termin vereinbaren." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --teal-dark:   #1a5c5a;
-      --teal:        #2a8080;
-      --teal-mid:    #3a9e9c;
-      --teal-light:  #6ec4c2;
-      --teal-pale:   #e8f6f6;
-      --gold:        #c8a96e;
-      --gold-light:  #f0e0bb;
-      --white:       #ffffff;
-      --off-white:   #f8fafa;
-      --text-dark:   #1c2b2b;
-      --text-mid:    #3d5555;
-      --text-light:  #6b8888;
-      --border:      #d4e8e8;
-      --shadow-sm:   0 2px 12px rgba(26,92,90,0.08);
-      --shadow-md:   0 8px 32px rgba(26,92,90,0.14);
-      --shadow-lg:   0 20px 60px rgba(26,92,90,0.18);
-      --radius:      14px;
-      --radius-lg:   24px;
-      --transition:  all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --c-900: #001F1F;
+      --c-800: #003535;
+      --c-700: #06524F;
+      --c-600: #0A7A76;
+      --c-500: #0EA19B;
+      --c-400: #3DC4BE;
+      --c-300: #80DBD7;
+      --c-100: #D6F4F3;
+      --c-50:  #F0FAFA;
+      --gold:  #D4A020;
+      --gold-l:#F5E6B0;
+      --red:   #E05252;
+      --white: #FFFFFF;
+      --text:  #0B1A1A;
+      --text-2:#2D5050;
+      --text-3:#6A9090;
+      --border:#C4E4E3;
+      --r-sm: 10px;
+      --r:    16px;
+      --r-lg: 24px;
+      --r-xl: 40px;
+      --ease: cubic-bezier(.4,0,.2,1);
+      --t: .32s var(--ease);
+      --shadow-sm: 0 2px 10px rgba(10,122,118,.08);
+      --shadow-md: 0 8px 30px rgba(10,122,118,.13);
+      --shadow-lg: 0 24px 64px rgba(10,122,118,.18);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--white);
+      color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ─── NAV ─────────────────────────────────────────────── */
-    nav {
+    /* ══════════════════════════════════════════════════
+       NAV – floating pill
+    ══════════════════════════════════════════════════ */
+    .nav-wrap {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1000;
+      width: calc(100% - 40px);
+      max-width: 1060px;
+      transition: var(--t);
+    }
+
+    nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 5%;
-      height: 72px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(210,232,232,0.6);
-      transition: var(--transition);
+      padding: 0 8px 0 20px;
+      height: 58px;
+      background: rgba(0,32,32,.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      transition: var(--t);
     }
 
-    nav.scrolled {
-      box-shadow: var(--shadow-sm);
+    nav.light {
+      background: rgba(255,255,255,.9);
+      border-color: var(--border);
+      box-shadow: var(--shadow-md);
     }
 
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
-    .nav-logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--c-500), var(--c-400));
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -82,1031 +107,1289 @@
       flex-shrink: 0;
     }
 
-    .nav-logo-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
-    }
+    .nav-logo-mark svg { width: 16px; height: 16px; fill: white; }
 
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
+    .nav-logo-text { display: flex; flex-direction: column; }
 
     .nav-logo-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--teal-dark);
+      font-size: .85rem;
+      font-weight: 700;
+      color: white;
       line-height: 1.2;
+      transition: var(--t);
     }
 
-    .nav-logo-title {
-      font-size: 0.72rem;
-      color: var(--text-light);
+    nav.light .nav-logo-name { color: var(--c-800); }
+
+    .nav-logo-sub {
+      font-size: .68rem;
+      color: rgba(255,255,255,.5);
       font-weight: 400;
-      letter-spacing: 0.02em;
+      letter-spacing: .02em;
+      transition: var(--t);
     }
+
+    nav.light .nav-logo-sub { color: var(--text-3); }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 2px;
       list-style: none;
     }
 
     .nav-links a {
       text-decoration: none;
-      font-size: 0.875rem;
+      font-size: .83rem;
       font-weight: 500;
-      color: var(--text-mid);
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: var(--transition);
+      color: rgba(255,255,255,.7);
+      padding: 7px 14px;
+      border-radius: 100px;
+      transition: var(--t);
     }
 
+    nav.light .nav-links a { color: var(--text-2); }
+
     .nav-links a:hover {
-      color: var(--teal);
-      background: var(--teal-pale);
+      color: white;
+      background: rgba(255,255,255,.12);
+    }
+
+    nav.light .nav-links a:hover {
+      color: var(--c-600);
+      background: var(--c-100);
     }
 
     .nav-cta {
-      background: linear-gradient(135deg, var(--teal), var(--teal-mid)) !important;
-      color: white !important;
-      padding: 10px 20px !important;
-      border-radius: 50px !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--gold) !important;
+      color: var(--c-900) !important;
+      font-weight: 700 !important;
+      font-size: .82rem !important;
+      padding: 9px 18px !important;
+      border-radius: 100px !important;
+      margin-left: 6px;
+      white-space: nowrap;
+      transition: var(--t) !important;
     }
 
     .nav-cta:hover {
+      background: #e0b030 !important;
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(42,128,128,0.35) !important;
-      background: linear-gradient(135deg, var(--teal-dark), var(--teal)) !important;
+      box-shadow: 0 6px 20px rgba(212,160,32,.4);
     }
 
-    .nav-hamburger {
+    .nav-ham {
       display: none;
       flex-direction: column;
       gap: 5px;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 4px;
+      padding: 8px;
+      margin-right: 4px;
     }
 
-    .nav-hamburger span {
+    .nav-ham span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
-      background: var(--teal-dark);
+      background: white;
       border-radius: 2px;
-      transition: var(--transition);
+      transition: var(--t);
     }
 
-    /* ─── HERO ────────────────────────────────────────────── */
+    nav.light .nav-ham span { background: var(--c-800); }
+
+    /* ══════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════ */
     .hero {
-      position: relative;
       min-height: 100vh;
+      position: relative;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       overflow: hidden;
-      background: linear-gradient(160deg, #0d3d3c 0%, #1a5c5a 35%, #2a8080 65%, #3a9e9c 100%);
+      background: var(--c-900);
     }
 
-    .hero-bg-shapes {
+    /* Animated mesh gradient */
+    .hero-mesh {
       position: absolute;
       inset: 0;
-      overflow: hidden;
-      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(14,161,155,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(6,82,79,.3) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 60% 80%, rgba(212,160,32,.08) 0%, transparent 60%);
+      animation: meshShift 12s ease-in-out infinite alternate;
     }
 
-    .hero-bg-shapes::before {
-      content: '';
+    @keyframes meshShift {
+      0%   { filter: hue-rotate(0deg) brightness(1); }
+      50%  { filter: hue-rotate(8deg) brightness(1.08); }
+      100% { filter: hue-rotate(-5deg) brightness(1.04); }
+    }
+
+    /* Grid overlay */
+    .hero-grid {
       position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 70%;
-      height: 130%;
-      background: radial-gradient(ellipse at center, rgba(110,196,194,0.15) 0%, transparent 70%);
-      border-radius: 50%;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
 
-    .hero-bg-shapes::after {
-      content: '';
-      position: absolute;
-      bottom: -15%;
-      left: -5%;
-      width: 50%;
-      height: 80%;
-      background: radial-gradient(ellipse at center, rgba(200,169,110,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero-wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      overflow: hidden;
-    }
-
-    .hero-wave svg {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-content {
+    .hero-body {
       position: relative;
       z-index: 2;
-      width: 90%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 120px 0 160px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 60px;
+      flex: 1;
+      display: flex;
       align-items: center;
+      width: 90%;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 140px 0 80px;
+      gap: 48px;
     }
 
-    .hero-badge {
+    .hero-left { flex: 1; min-width: 0; }
+
+    .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 8px 16px;
-      border-radius: 50px;
-      margin-bottom: 28px;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
     }
 
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
+    .hero-kicker-dot {
+      width: 7px; height: 7px;
       background: var(--gold);
       border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+      animation: blink 2.4s ease-in-out infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.3); }
+    @keyframes blink {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(1.4); }
     }
 
-    .hero-title {
+    .hero-h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(3rem, 6.5vw, 5.2rem);
       font-weight: 700;
       color: white;
-      line-height: 1.15;
-      margin-bottom: 12px;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
     }
 
-    .hero-title span {
-      color: var(--gold);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: rgba(255,255,255,0.75);
-      font-weight: 300;
-      margin-bottom: 8px;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-specialty {
-      font-size: clamp(0.85rem, 1.5vw, 1rem);
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 40px;
+    .hero-h1 em {
       font-style: italic;
+      color: var(--c-300);
     }
+
+    .hero-h2 {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 400;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 8px;
+    }
+
+    .hero-specs {
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .04em;
+      margin-bottom: 48px;
+    }
+
+    .hero-specs span { margin: 0 8px; }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       align-items: center;
     }
 
-    .btn-primary {
+    .btn-gold {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       background: var(--gold);
-      color: var(--teal-dark);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 50px;
+      color: var(--c-900);
+      font-weight: 700;
+      font-size: .92rem;
+      padding: 15px 30px;
+      border-radius: 100px;
       text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(200,169,110,0.4);
+      transition: var(--t);
+      box-shadow: 0 4px 24px rgba(212,160,32,.35);
     }
 
-    .btn-primary:hover {
-      background: #d4b67a;
+    .btn-gold:hover {
+      background: #e0b030;
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(200,169,110,0.5);
+      box-shadow: 0 10px 32px rgba(212,160,32,.5);
     }
 
-    .btn-secondary {
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.3);
-      color: white;
+      gap: 9px;
+      background: rgba(255,255,255,.08);
+      border: 1.5px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.85);
       font-weight: 500;
-      font-size: 0.95rem;
-      padding: 13px 28px;
-      border-radius: 50px;
+      font-size: .92rem;
+      padding: 14px 28px;
+      border-radius: 100px;
       text-decoration: none;
-      transition: var(--transition);
+      transition: var(--t);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.5);
+    .btn-ghost:hover {
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.4);
       transform: translateY(-2px);
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      min-width: 220px;
+    /* Right panel */
+    .hero-right {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+      flex-shrink: 0;
+      width: 240px;
     }
 
-    .hero-card-item {
+    .hero-info-card {
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-lg);
+      padding: 20px 22px;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 14px;
+      transition: var(--t);
     }
 
-    .hero-card-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 10px;
+    .hero-info-card:hover {
+      background: rgba(255,255,255,.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-info-ico {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.1);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1rem;
+      color: var(--c-300);
     }
 
-    .hero-card-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.55);
+    .hero-info-ico svg { width: 18px; height: 18px; }
+
+    .hero-info-label {
+      font-size: .68rem;
+      color: rgba(255,255,255,.4);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 500;
+      letter-spacing: .07em;
+      font-weight: 600;
     }
 
-    .hero-card-value {
-      font-size: 0.9rem;
+    .hero-info-val {
+      font-size: .88rem;
       color: white;
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 3px;
+      line-height: 1.4;
     }
 
-    /* ─── SECTIONS ────────────────────────────────────────── */
-    section {
-      padding: 90px 5%;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      background: var(--teal-pale);
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text-dark);
-      line-height: 1.25;
-      margin-bottom: 16px;
-    }
-
-    .section-title span { color: var(--teal); }
-
-    .section-lead {
-      font-size: 1.05rem;
-      color: var(--text-mid);
-      max-width: 560px;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* ─── ABOUT ───────────────────────────────────────────── */
-    #ueber-mich {
-      background: var(--off-white);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+    /* Scroll indicator */
+    .hero-scroll {
+      position: relative;
+      z-index: 2;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      padding-bottom: 40px;
+      gap: 10px;
     }
 
-    .about-visual {
-      position: relative;
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.3));
+      animation: scrollLine 2s ease-in-out infinite;
     }
 
-    .about-card-main {
-      background: linear-gradient(160deg, var(--teal-dark), var(--teal));
-      border-radius: var(--radius-lg);
-      padding: 48px 40px;
-      color: white;
-      position: relative;
-      overflow: hidden;
+    @keyframes scrollLine {
+      0%,100% { opacity: .4; transform: scaleY(.6) translateY(0); }
+      50%      { opacity: 1; transform: scaleY(1) translateY(4px); }
     }
 
-    .about-card-main::before {
-      content: '';
+    .hero-scroll-text {
+      font-size: .7rem;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    /* Wave */
+    .hero-wave {
       position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 140px;
-      height: 140px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-    }
-
-    .about-card-main::after {
-      content: '';
-      position: absolute;
-      bottom: -40px;
-      left: -20px;
-      width: 180px;
-      height: 180px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-    }
-
-    .about-card-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-style: italic;
-      line-height: 1.55;
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-card-quote::before {
-      content: '"';
-      font-size: 4rem;
-      color: rgba(255,255,255,0.2);
+      bottom: -1px;
+      left: 0;
+      right: 0;
       line-height: 0;
-      vertical-align: -1.5rem;
-      margin-right: 4px;
-      font-family: 'Playfair Display', serif;
     }
 
-    .about-card-name {
+    .hero-wave svg { width: 100%; height: 80px; display: block; }
+
+    /* ══════════════════════════════════════════════════
+       MARQUEE TICKER
+    ══════════════════════════════════════════════════ */
+    .ticker {
+      background: var(--c-600);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 28s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 32px;
+      font-size: .78rem;
       font-weight: 600;
-      font-size: 1rem;
-      position: relative;
-      z-index: 1;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .05em;
+      text-transform: uppercase;
     }
 
-    .about-card-role {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      margin-top: 4px;
-      position: relative;
-      z-index: 1;
+    .ticker-sep {
+      width: 5px; height: 5px;
+      background: rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
     }
 
-    .about-badge {
-      position: absolute;
-      bottom: -20px;
-      right: 32px;
-      background: var(--gold);
-      color: var(--teal-dark);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 10px 20px;
-      border-radius: 50px;
-      box-shadow: var(--shadow-md);
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    .about-stats {
+    /* ══════════════════════════════════════════════════
+       STATS BAND
+    ══════════════════════════════════════════════════ */
+    .stats-band {
+      background: var(--c-50);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+    }
+
+    .stats-inner {
+      max-width: 1060px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      divide-x: 1px solid var(--border);
     }
 
-    .about-stat {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
+    .stat-item {
+      padding: 40px 32px;
       text-align: center;
-      box-shadow: var(--shadow-sm);
+      border-right: 1px solid var(--border);
+      position: relative;
     }
 
-    .about-stat-num {
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 2.6rem;
       font-weight: 700;
-      color: var(--teal);
+      color: var(--c-600);
       line-height: 1;
       margin-bottom: 6px;
     }
 
-    .about-stat-label {
-      font-size: 0.8rem;
-      color: var(--text-light);
+    .stat-label {
+      font-size: .8rem;
+      color: var(--text-3);
       font-weight: 500;
+      letter-spacing: .03em;
     }
 
-    .about-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      margin-bottom: 16px;
-    }
+    /* ══════════════════════════════════════════════════
+       SECTION HELPERS
+    ══════════════════════════════════════════════════ */
+    .sec { padding: 96px 5%; }
 
-    .about-text p {
-      color: var(--text-mid);
-      line-height: 1.75;
-      margin-bottom: 16px;
-      font-size: 0.97rem;
-    }
-
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .about-highlight-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.9rem;
-      color: var(--text-mid);
-    }
-
-    .about-highlight-item::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--teal-mid);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* ─── LEISTUNGEN ──────────────────────────────────────── */
-    #leistungen {
-      background: white;
-    }
-
-    .leistungen-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .leistungen-header .section-lead {
+    .con {
+      max-width: 1060px;
       margin: 0 auto;
     }
 
-    .leistungen-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .sec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c-600);
+      background: var(--c-100);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
     }
 
-    .leistung-card {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
+    .sec-num {
+      display: inline-block;
+      width: 20px; height: 20px;
+      background: var(--c-500);
+      color: white;
+      border-radius: 50%;
+      font-size: .6rem;
+      font-weight: 800;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .sec-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+
+    .sec-h2 em {
+      font-style: italic;
+      color: var(--c-500);
+    }
+
+    .sec-lead {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 540px;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════════ */
+    #ueber-mich { background: var(--white); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    /* Visual side */
+    .about-visual { position: relative; }
+
+    .about-quote-card {
+      background: linear-gradient(150deg, var(--c-800), var(--c-700) 60%, var(--c-600));
+      border-radius: var(--r-xl);
+      padding: 52px 44px 44px;
+      color: white;
       position: relative;
       overflow: hidden;
-      transition: var(--transition);
-      cursor: default;
     }
 
-    .leistung-card::before {
+    .about-quote-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-light));
-      opacity: 0;
-      transition: var(--transition);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 32px 32px;
     }
 
-    .leistung-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-      border-color: var(--teal-light);
-      background: white;
+    .about-quote-glyph {
+      position: absolute;
+      top: 28px; left: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      line-height: 1;
+      color: rgba(255,255,255,.08);
+      font-style: italic;
+      pointer-events: none;
+      user-select: none;
     }
 
-    .leistung-card:hover::before {
-      opacity: 1;
+    .about-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
     }
 
-    .leistung-icon {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--teal-pale), #c6eaea);
-      border-radius: 16px;
+    .about-quote-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-quote-avatar {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.15);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-    }
-
-    .leistung-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      color: var(--text-dark);
-      margin-bottom: 12px;
-    }
-
-    .leistung-card p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.65;
-    }
-
-    .leistung-tag {
-      display: inline-block;
-      margin-top: 16px;
-      font-size: 0.75rem;
-      color: var(--teal);
-      background: var(--teal-pale);
-      padding: 4px 10px;
-      border-radius: 50px;
-      font-weight: 500;
-    }
-
-    /* ─── KASSEN ──────────────────────────────────────────── */
-    .kassen-banner {
-      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
-      border-radius: var(--radius-lg);
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .kassen-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 8px;
-    }
-
-    .kassen-text p {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.95rem;
-    }
-
-    .kassen-badge {
-      background: var(--gold);
-      color: var(--teal-dark);
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      padding: 16px 32px;
-      border-radius: 50px;
+      color: var(--c-300);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .about-quote-name { font-weight: 600; font-size: .9rem; }
+    .about-quote-role { font-size: .78rem; opacity: .6; margin-top: 2px; }
+
+    /* Floating badge */
+    .about-badge-float {
+      position: absolute;
+      bottom: -18px;
+      right: 32px;
+      background: var(--gold);
+      color: var(--c-900);
+      font-weight: 800;
+      font-size: .8rem;
+      padding: 10px 22px;
+      border-radius: 100px;
+      box-shadow: var(--shadow-md);
       white-space: nowrap;
     }
 
-    /* ─── ÖFFNUNGSZEITEN ──────────────────────────────────── */
-    #oeffnungszeiten {
-      background: var(--off-white);
-    }
-
-    .stunden-grid {
+    /* Stats grid */
+    .about-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .about-stat {
+      background: var(--c-50);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px 20px;
+      text-align: center;
+      transition: var(--t);
+    }
+
+    .about-stat:hover {
+      border-color: var(--c-300);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .about-stat-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--c-500);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .about-stat-l {
+      font-size: .78rem;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    /* Text side */
+    .about-text-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .about-text-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .92rem;
+      color: var(--text-2);
+    }
+
+    .about-check {
+      width: 22px; height: 22px;
+      background: var(--c-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-600);
+    }
+
+    .about-check svg { width: 11px; height: 11px; }
+
+    .about-text p {
+      font-size: .96rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    /* ══════════════════════════════════════════════════
+       LEISTUNGEN – BENTO GRID
+    ══════════════════════════════════════════════════ */
+    #leistungen { background: var(--c-50); }
+
+    .leist-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .leist-header .sec-lead { margin: 0 auto; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+
+    .bento-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--t);
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r-lg);
+      box-shadow: inset 0 0 0 2px var(--c-400);
+      opacity: 0;
+      transition: var(--t);
+    }
+
+    .bento-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .bento-card:hover::after { opacity: 1; }
+
+    /* Bento layout spans */
+    .b1 { grid-column: span 3; }
+    .b2 { grid-column: span 3; }
+    .b3 { grid-column: span 2; }
+    .b4 { grid-column: span 2; }
+    .b5 { grid-column: span 2; }
+
+    /* Featured card */
+    .bento-card.featured {
+      background: linear-gradient(140deg, var(--c-800), var(--c-600));
+      border-color: transparent;
+      color: white;
+    }
+
+    .bento-card.featured::after {
+      box-shadow: none;
+    }
+
+    .bento-card.featured:hover {
+      background: linear-gradient(140deg, var(--c-900), var(--c-700));
+    }
+
+    .bento-num {
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      color: var(--c-300);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .bento-card.featured .bento-num { color: rgba(255,255,255,.4); }
+
+    .bento-icon {
+      width: 52px; height: 52px;
+      background: var(--c-100);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+      color: var(--c-600);
+    }
+
+    .bento-card.featured .bento-icon {
+      background: rgba(255,255,255,.15);
+      color: white;
+    }
+
+    .bento-icon svg { width: 24px; height: 24px; }
+
+    .bento-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .bento-card.featured h3 { color: white; font-size: 1.25rem; }
+
+    .bento-card p {
+      font-size: .87rem;
+      color: var(--text-3);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .bento-card.featured p { color: rgba(255,255,255,.65); }
+
+    .bento-pill {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--c-600);
+      background: var(--c-100);
+      padding: 5px 12px;
+      border-radius: 100px;
+      letter-spacing: .04em;
+    }
+
+    .bento-card.featured .bento-pill {
+      color: white;
+      background: rgba(255,255,255,.15);
+    }
+
+    /* Kassen card */
+    .bento-kassen {
+      grid-column: span 6;
+      background: linear-gradient(90deg, var(--c-900), var(--c-700));
+      border-color: transparent;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 36px 48px;
+      margin-top: 4px;
+    }
+
+    .bento-kassen:hover { transform: none; }
+
+    .bento-kassen-t {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .bento-kassen-s {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    .bento-kassen-badge {
+      background: var(--gold);
+      color: var(--c-900);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════
+       ÖFFNUNGSZEITEN
+    ══════════════════════════════════════════════════ */
+    #oeffnungszeiten { background: var(--white); }
+
+    .hours-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
       align-items: start;
     }
 
-    .stunden-table {
-      background: white;
+    .hours-card {
+      background: var(--c-50);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--r-xl);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
     }
 
-    .stunden-row {
+    .hours-header-card {
+      background: linear-gradient(135deg, var(--c-800), var(--c-700));
+      padding: 28px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 28px;
+    }
+
+    .hours-header-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .hours-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .hours-status.open {
+      background: rgba(61,196,190,.2);
+      color: var(--c-300);
+      border: 1px solid rgba(61,196,190,.3);
+    }
+
+    .hours-status.closed {
+      background: rgba(224,82,82,.2);
+      color: #ff9090;
+      border: 1px solid rgba(224,82,82,.3);
+    }
+
+    .hours-status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    .hours-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 32px;
       border-bottom: 1px solid var(--border);
-      transition: var(--transition);
+      transition: var(--t);
     }
 
-    .stunden-row:last-child {
-      border-bottom: none;
+    .hours-row:last-child { border-bottom: none; }
+
+    .hours-row:hover { background: var(--c-100); }
+
+    .hours-row.today {
+      background: rgba(14,161,155,.07);
+      border-left: 3px solid var(--c-500);
+      padding-left: 29px;
     }
 
-    .stunden-row:hover {
-      background: var(--teal-pale);
+    .hours-day {
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--text);
     }
 
-    .stunden-row.today {
-      background: var(--teal-pale);
-      border-left: 3px solid var(--teal);
-    }
-
-    .stunden-day {
-      font-weight: 500;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-    }
-
-    .stunden-time {
-      font-size: 0.9rem;
-      color: var(--text-mid);
+    .hours-time {
+      font-size: .88rem;
+      color: var(--text-2);
       text-align: right;
+      line-height: 1.4;
     }
 
-    .stunden-closed {
-      color: #d9534f;
+    .hours-closed-text {
+      font-size: .88rem;
+      color: var(--red);
       font-style: italic;
-      font-size: 0.9rem;
     }
 
-    .stunden-notice {
-      margin-top: 20px;
-      background: #fff8e6;
-      border: 1px solid #f0d78a;
-      border-radius: var(--radius);
+    .hours-notice {
+      margin-top: 18px;
+      background: #fffbf0;
+      border: 1px solid #f0d88a;
+      border-radius: var(--r);
       padding: 16px 20px;
       display: flex;
       gap: 12px;
       align-items: flex-start;
     }
 
-    .stunden-notice-icon {
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
+    .hours-notice svg { width: 18px; height: 18px; flex-shrink: 0; color: #c4930a; margin-top: 1px; }
 
-    .stunden-notice p {
-      font-size: 0.88rem;
+    .hours-notice p {
+      font-size: .83rem;
       color: #7a5f1a;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    .stunden-info {
+    /* Right info cards */
+    .hours-info-col {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 18px;
     }
 
-    .stunden-info-card {
-      background: white;
+    .hours-info-item {
+      background: var(--c-50);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--r-lg);
       padding: 28px;
-      box-shadow: var(--shadow-sm);
+      transition: var(--t);
     }
 
-    .stunden-info-card h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-bottom: 12px;
+    .hours-info-item:hover {
+      border-color: var(--c-300);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .hours-info-ico {
+      width: 44px; height: 44px;
+      background: var(--c-100);
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      color: var(--c-600);
+      margin-bottom: 16px;
     }
 
-    .stunden-info-card p {
-      font-size: 0.9rem;
-      color: var(--text-mid);
+    .hours-info-ico svg { width: 20px; height: 20px; }
+
+    .hours-info-item h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .hours-info-item p {
+      font-size: .87rem;
+      color: var(--text-2);
       line-height: 1.6;
     }
 
-    .stunden-info-card a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--teal);
+    .hours-info-item a {
+      display: inline-block;
+      color: var(--c-500);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-top: 4px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-top: 6px;
+      transition: var(--t);
     }
 
-    .stunden-info-card a:hover {
-      color: var(--teal-dark);
-    }
+    .hours-info-item a:hover { color: var(--c-700); }
 
-    /* ─── KONTAKT ─────────────────────────────────────────── */
-    #kontakt {
-      background: white;
-    }
+    /* ══════════════════════════════════════════════════
+       KONTAKT
+    ══════════════════════════════════════════════════ */
+    #kontakt { background: var(--c-50); }
 
     .kontakt-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
       align-items: start;
     }
 
-    .kontakt-info {
+    .kontakt-items {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .kontakt-item {
       display: flex;
       gap: 16px;
       align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 22px;
+      transition: var(--t);
     }
 
-    .kontakt-item-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--teal-pale);
-      border-radius: 14px;
+    .kontakt-item:hover {
+      border-color: var(--c-300);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+
+    .kontakt-ico {
+      width: 44px; height: 44px;
+      background: var(--c-100);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
       flex-shrink: 0;
-      color: var(--teal);
+      color: var(--c-600);
     }
 
-    .kontakt-item-content label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
+    .kontakt-ico svg { width: 20px; height: 20px; }
+
+    .kontakt-item-label {
+      font-size: .7rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--text-light);
+      letter-spacing: .08em;
+      color: var(--text-3);
       margin-bottom: 4px;
     }
 
-    .kontakt-item-content p, .kontakt-item-content a {
-      font-size: 0.95rem;
-      color: var(--text-dark);
+    .kontakt-item-val {
+      font-size: .93rem;
+      color: var(--text);
       line-height: 1.5;
+    }
+
+    .kontakt-item-val a {
+      color: var(--c-500);
       text-decoration: none;
-      font-weight: 400;
+      font-weight: 600;
+      transition: var(--t);
     }
 
-    .kontakt-item-content a {
-      color: var(--teal);
-      font-weight: 500;
-    }
-
-    .kontakt-item-content a:hover {
-      color: var(--teal-dark);
-    }
+    .kontakt-item-val a:hover { color: var(--c-700); }
 
     .kontakt-map {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--r-xl);
       overflow: hidden;
-      height: 320px;
-      position: relative;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .kontakt-map iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Kontaktformular */
-    .kontakt-form-section {
-      margin-top: 60px;
-      background: var(--off-white);
+      height: 280px;
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 18px;
     }
 
-    .kontakt-form-section h3 {
+    .kontakt-map iframe { width: 100%; height: 100%; border: none; }
+
+    /* Form */
+    .kontakt-form-wrap {
+      margin-top: 72px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kontakt-form-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--c-600), var(--c-400), var(--gold));
+    }
+
+    .form-head { margin-bottom: 36px; }
+    .form-head h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--text-dark);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
       margin-bottom: 8px;
     }
-
-    .kontakt-form-section p {
-      color: var(--text-mid);
-      font-size: 0.9rem;
-      margin-bottom: 32px;
-    }
+    .form-head p { font-size: .9rem; color: var(--text-2); }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .fg { display: flex; flex-direction: column; gap: 7px; }
+    .fg.full { grid-column: 1 / -1; }
+
+    .fg label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--text-2);
+      letter-spacing: .03em;
     }
 
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
-
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-mid);
-      letter-spacing: 0.03em;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      background: white;
+    .fg input,
+    .fg select,
+    .fg textarea {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .92rem;
+      color: var(--text);
+      background: var(--c-50);
       border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 16px;
+      border-radius: var(--r);
+      padding: 13px 16px;
       outline: none;
-      transition: var(--transition);
+      transition: var(--t);
       width: 100%;
     }
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--teal-light);
-      box-shadow: 0 0 0 3px rgba(110,196,194,0.15);
+    .fg input:focus,
+    .fg select:focus,
+    .fg textarea:focus {
+      border-color: var(--c-400);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(61,196,190,.15);
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
+    .fg textarea { resize: vertical; min-height: 120px; }
 
-    .form-submit {
-      margin-top: 8px;
-    }
-
-    .btn-form {
+    .btn-submit {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      background: linear-gradient(135deg, var(--c-600), var(--c-500));
       color: white;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 14px 32px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .92rem;
+      font-weight: 700;
+      padding: 15px 36px;
       border: none;
-      border-radius: 50px;
+      border-radius: 100px;
       cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 16px rgba(42,128,128,0.3);
+      transition: var(--t);
+      box-shadow: 0 4px 20px rgba(10,122,118,.3);
     }
 
-    .btn-form:hover {
+    .btn-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(42,128,128,0.4);
+      box-shadow: 0 10px 30px rgba(10,122,118,.4);
     }
 
-    /* ─── FOOTER ──────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════ */
     footer {
-      background: var(--text-dark);
-      color: rgba(255,255,255,0.7);
-      padding: 60px 5% 32px;
+      background: var(--c-900);
+      color: rgba(255,255,255,.6);
+      padding: 72px 5% 36px;
     }
 
-    .footer-grid {
-      max-width: 1100px;
+    .footer-inner {
+      max-width: 1060px;
       margin: 0 auto;
+    }
+
+    .footer-top {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 56px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
-    .footer-brand p {
-      font-size: 0.88rem;
-      line-height: 1.7;
-      margin-top: 12px;
-      max-width: 280px;
-    }
-
-    .footer-brand .nav-logo-name {
-      color: white;
-      font-size: 1.1rem;
-    }
-
-    .footer-brand .nav-logo-title {
-      color: rgba(255,255,255,0.5);
-    }
-
-    .footer-col h4 {
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.4);
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
       margin-bottom: 16px;
     }
 
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .footer-brand-logo .nav-logo-name { color: white; font-size: .95rem; }
+    .footer-brand-logo .nav-logo-sub  { color: rgba(255,255,255,.4); }
+
+    .footer-brand p {
+      font-size: .85rem;
+      line-height: 1.7;
+      max-width: 280px;
     }
 
+    .footer-col h4 {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul li a {
       text-decoration: none;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      transition: var(--transition);
+      color: rgba(255,255,255,.55);
+      font-size: .88rem;
+      transition: var(--t);
     }
 
-    .footer-col ul li a:hover {
-      color: var(--teal-light);
-    }
+    .footer-col ul li a:hover { color: var(--c-300); }
 
     .footer-bottom {
-      max-width: 1100px;
-      margin: 28px auto 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      font-size: 0.82rem;
+      margin-top: 32px;
+      font-size: .8rem;
       flex-wrap: wrap;
     }
 
     .footer-bottom a {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,.4);
       text-decoration: none;
-      transition: var(--transition);
+      transition: var(--t);
     }
 
-    .footer-bottom a:hover {
-      color: var(--teal-light);
-    }
+    .footer-bottom a:hover { color: var(--c-300); }
 
-    /* ─── SCROLL TO TOP ───────────────────────────────────── */
-    .scroll-top {
+    .footer-links { display: flex; gap: 20px; }
+
+    /* ══════════════════════════════════════════════════
+       SCROLL TOP
+    ══════════════════════════════════════════════════ */
+    .scroll-top-btn {
       position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      bottom: 28px;
+      right: 28px;
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, var(--c-600), var(--c-500));
       color: white;
       border: none;
       border-radius: 50%;
@@ -1115,468 +1398,587 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: var(--shadow-md);
-      transition: var(--transition);
+      transition: var(--t);
       opacity: 0;
       pointer-events: none;
-      z-index: 999;
-      font-size: 1.1rem;
+      z-index: 900;
     }
 
-    .scroll-top.visible {
+    .scroll-top-btn svg { width: 20px; height: 20px; }
+
+    .scroll-top-btn.show {
       opacity: 1;
       pointer-events: auto;
     }
 
-    .scroll-top:hover {
+    .scroll-top-btn:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
 
-    /* ─── ANIMATIONS ──────────────────────────────────────── */
-    .fade-in {
+    /* ══════════════════════════════════════════════════
+       REVEAL ANIMATIONS
+    ══════════════════════════════════════════════════ */
+    .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(30px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
     }
 
-    .fade-in.visible {
+    .reveal.in {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .fade-in:nth-child(2) { transition-delay: 0.1s; }
-    .fade-in:nth-child(3) { transition-delay: 0.2s; }
-    .fade-in:nth-child(4) { transition-delay: 0.3s; }
-    .fade-in:nth-child(5) { transition-delay: 0.4s; }
-    .fade-in:nth-child(6) { transition-delay: 0.5s; }
+    .reveal:nth-child(2) { transition-delay: .08s; }
+    .reveal:nth-child(3) { transition-delay: .16s; }
+    .reveal:nth-child(4) { transition-delay: .24s; }
+    .reveal:nth-child(5) { transition-delay: .32s; }
+    .reveal:nth-child(6) { transition-delay: .40s; }
 
-    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      .about-grid,
-      .stunden-grid,
-      .kontakt-grid {
+      .about-layout,
+      .hours-layout,
+      .kontakt-grid,
+      .footer-top {
         grid-template-columns: 1fr;
         gap: 40px;
       }
 
-      .leistungen-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .bento { grid-template-columns: 1fr 1fr; }
+      .b1,.b2,.b3,.b4,.b5,.bento-kassen { grid-column: span 2; }
 
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
+      .hero-right { display: none; }
 
-      .hero-card {
-        display: none;
-      }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
 
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .footer-top { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
-      section { padding: 64px 5%; }
+      .sec { padding: 72px 5%; }
+
+      .nav-wrap { top: 12px; width: calc(100% - 24px); }
+
+      nav { height: 52px; }
 
       .nav-links { display: none; }
-
-      .nav-hamburger { display: flex; }
-
       .nav-links.open {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
-        padding: 16px 5% 24px;
-        box-shadow: var(--shadow-md);
+        top: 76px;
+        left: 12px;
+        right: 12px;
+        background: var(--c-900);
+        border-radius: var(--r-lg);
+        padding: 16px 12px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(255,255,255,.12);
         gap: 4px;
       }
+      .nav-links.open a { color: rgba(255,255,255,.75); }
 
-      .leistungen-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-ham { display: flex; }
 
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-body { padding: 120px 0 80px; }
 
-      .form-group.full {
-        grid-column: 1;
-      }
+      .bento { grid-template-columns: 1fr; }
+      .b1,.b2,.b3,.b4,.b5,.bento-kassen { grid-column: span 1; }
+      .bento-kassen { flex-direction: column; text-align: center; padding: 32px 28px; }
 
-      .kassen-banner {
-        flex-direction: column;
-        text-align: center;
-      }
+      .form-grid { grid-template-columns: 1fr; }
+      .fg.full { grid-column: 1; }
 
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+      .kontakt-form-wrap { padding: 36px 28px; }
 
-      .kontakt-form-section {
-        padding: 32px 24px;
-      }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: 28px 20px; }
 
-      .hero-content {
-        padding: 100px 0 140px;
-      }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
 
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 2.6rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-      </svg>
-    </div>
-    <div class="nav-logo-text">
-      <span class="nav-logo-name">Dr. Anita Guggenberger</span>
-      <span class="nav-logo-title">Fachärztin für Innere Medizin</span>
-    </div>
-  </a>
+<!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<div class="nav-wrap">
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3V8zM4 8a6 6 0 1 0 12 0 6 6 0 0 0-12 0z"/>
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Dr. Anita Guggenberger</span>
+        <span class="nav-logo-sub">Fachärztin · Innere Medizin</span>
+      </div>
+    </a>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#ueber-mich">Über mich</a></li>
-    <li><a href="#leistungen">Leistungen</a></li>
-    <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="tel:0767233544" class="nav-cta">📞 Termin vereinbaren</a></li>
-  </ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#ueber-mich">Über mich</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="tel:0767233544" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Termin vereinbaren
+      </a></li>
+    </ul>
 
-  <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+    <button class="nav-ham" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
 
-<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-bg-shapes"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
 
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
         Praxis geöffnet · Alle Kassen willkommen
       </div>
-      <h1 class="hero-title">
-        Dr. Anita<br><span>Guggenberger</span>
-      </h1>
-      <p class="hero-subtitle">Fachärztin für Innere Medizin</p>
-      <p class="hero-specialty">Endokrinologie · Diabetologie · Kardiologische Spezifizierung</p>
+      <h1 class="hero-h1">Dr. Anita<br><em>Guggenberger</em></h1>
+      <p class="hero-h2">Fachärztin für Innere Medizin</p>
+      <p class="hero-specs">Endokrinologie <span>·</span> Diabetologie <span>·</span> Kardiologische Spezifizierung</p>
       <div class="hero-actions">
-        <a href="tel:0767233544" class="btn-primary">
-          📞 Jetzt anrufen
+        <a href="tel:0767233544" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Jetzt anrufen
         </a>
-        <a href="#leistungen" class="btn-secondary">
-          Leistungen entdecken →
+        <a href="#leistungen" class="btn-ghost">
+          Leistungen entdecken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
 
-    <div class="hero-card">
-      <div class="hero-card-item">
-        <div class="hero-card-icon">📍</div>
+    <div class="hero-right">
+      <div class="hero-info-card">
+        <div class="hero-info-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
         <div>
-          <div class="hero-card-label">Adresse</div>
-          <div class="hero-card-value">Robert-Kunz-Straße 11<br>4840 Vöcklabruck</div>
+          <div class="hero-info-label">Adresse</div>
+          <div class="hero-info-val">Robert-Kunz-Straße 11<br>4840 Vöcklabruck</div>
         </div>
       </div>
-      <div class="hero-card-item">
-        <div class="hero-card-icon">📞</div>
+      <div class="hero-info-card">
+        <div class="hero-info-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
         <div>
-          <div class="hero-card-label">Telefon</div>
-          <div class="hero-card-value">07672 33 5 44</div>
+          <div class="hero-info-label">Telefon</div>
+          <div class="hero-info-val">07672 33 5 44</div>
         </div>
       </div>
-      <div class="hero-card-item">
-        <div class="hero-card-icon">🕐</div>
+      <div class="hero-info-card">
+        <div class="hero-info-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
         <div>
-          <div class="hero-card-label">Heute</div>
-          <div class="hero-card-value" id="todayHours">–</div>
+          <div class="hero-info-label">Heute</div>
+          <div class="hero-info-val" id="todayHours">–</div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scrollen</span>
+  </div>
+
   <div class="hero-wave">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#f8fafa"/>
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,48 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
     </svg>
   </div>
 </section>
 
-<!-- ═══ ÜBER MICH ══════════════════════════════════════════════ -->
-<section id="ueber-mich">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-visual">
-        <div class="about-card-main">
-          <p class="about-card-quote">
+<!-- ══ TICKER ════════════════════════════════════════════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Alle Kassen willkommen <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Robert-Kunz-Straße 11 · 4840 Vöcklabruck <span class="ticker-sep"></span></span>
+    <span class="ticker-item">07672 33 5 44 <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Endokrinologie · Diabetologie · Kardiologie <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Termin jetzt vereinbaren <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Apotheke Schöndorf · Erdgeschoss <span class="ticker-sep"></span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">Alle Kassen willkommen <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Robert-Kunz-Straße 11 · 4840 Vöcklabruck <span class="ticker-sep"></span></span>
+    <span class="ticker-item">07672 33 5 44 <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Endokrinologie · Diabetologie · Kardiologie <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Termin jetzt vereinbaren <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Apotheke Schöndorf · Erdgeschoss <span class="ticker-sep"></span></span>
+  </div>
+</div>
+
+<!-- ══ STATS BAND ═════════════════════════════════════════════ -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="3">0</div>
+      <div class="stat-label">Medizinische Fachgebiete</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="100" data-suffix="%">0</div>
+      <div class="stat-label">Kassenleistungen abgedeckt</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="9" data-suffix="+">0</div>
+      <div class="stat-label">Stunden täglich für Sie</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="1" data-prefix="EG">EG</div>
+      <div class="stat-label">Barrierefreier Zugang</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ÜBER MICH ══════════════════════════════════════════════ -->
+<section class="sec" id="ueber-mich">
+  <div class="con">
+    <div class="about-layout">
+
+      <!-- Visual col -->
+      <div class="about-visual reveal">
+        <div class="about-quote-card">
+          <div class="about-quote-glyph">"</div>
+          <p class="about-quote-text">
             Ihre Gesundheit ist mein Auftrag – persönlich, kompetent und mit Herz.
           </p>
-          <div class="about-card-name">Dr. Anita Guggenberger</div>
-          <div class="about-card-role">Fachärztin für Innere Medizin</div>
-          <div class="about-badge">✓ Alle Kassen</div>
+          <div class="about-quote-author">
+            <div class="about-quote-avatar">AG</div>
+            <div>
+              <div class="about-quote-name">Dr. Anita Guggenberger</div>
+              <div class="about-quote-role">Fachärztin für Innere Medizin</div>
+            </div>
+          </div>
+          <div class="about-badge-float">✓ Alle Kassen</div>
         </div>
         <div class="about-stats">
-          <div class="about-stat fade-in">
-            <div class="about-stat-num">3</div>
-            <div class="about-stat-label">Fachgebiete</div>
+          <div class="about-stat reveal">
+            <div class="about-stat-n">3</div>
+            <div class="about-stat-l">Fachgebiete</div>
           </div>
-          <div class="about-stat fade-in">
-            <div class="about-stat-num">4840</div>
-            <div class="about-stat-label">Vöcklabruck</div>
+          <div class="about-stat reveal">
+            <div class="about-stat-n">4840</div>
+            <div class="about-stat-l">Vöcklabruck</div>
           </div>
-          <div class="about-stat fade-in">
-            <div class="about-stat-num">9+</div>
-            <div class="about-stat-label">Std. täglich für Sie</div>
+          <div class="about-stat reveal">
+            <div class="about-stat-n">9+</div>
+            <div class="about-stat-l">Stunden täglich</div>
           </div>
-          <div class="about-stat fade-in">
-            <div class="about-stat-num">100%</div>
-            <div class="about-stat-label">Kassenleistungen</div>
+          <div class="about-stat reveal">
+            <div class="about-stat-n">100%</div>
+            <div class="about-stat-l">Kassenleistungen</div>
           </div>
         </div>
       </div>
 
-      <div class="about-text">
-        <div class="section-tag">Über die Praxis</div>
-        <h2 class="section-title">Kompetenz & <span>Fürsorge</span> unter einem Dach</h2>
-        <p>
-          In meiner internistischen Fachpraxis in Vöcklabruck verbinde ich jahrelange medizinische Erfahrung mit einem modernen, patientenorientierten Ansatz. Mein Ziel ist es, Ihnen umfassende Diagnostik und Therapie in einer vertrauensvollen Atmosphäre zu bieten.
-        </p>
-        <p>
-          Mit Schwerpunkten in Endokrinologie, Diabetologie und kardiologischer Spezifizierung stehe ich Ihnen bei einem breiten Spektrum internistischer Erkrankungen zur Seite – einfühlsam, ganzheitlich und auf dem neuesten Stand der Medizin.
-        </p>
-        <div class="about-highlights">
-          <div class="about-highlight-item">Fachärztin für Innere Medizin mit umfassender Expertise</div>
-          <div class="about-highlight-item">Spezialisiert auf Endokrinologie & Diabetologie</div>
-          <div class="about-highlight-item">Kardiologische Spezifizierung & Vorsorge</div>
-          <div class="about-highlight-item">Alle Krankenkassen – ohne Mehrkosten</div>
-          <div class="about-highlight-item">Zentrale Lage in Vöcklabruck, Erdgeschoss</div>
+      <!-- Text col -->
+      <div class="about-text reveal">
+        <div class="sec-tag">
+          <span class="sec-num">01</span>
+          Über die Praxis
         </div>
+        <h2 class="sec-h2">Kompetenz &amp; <em>Fürsorge</em><br>unter einem Dach</h2>
+        <p>In meiner internistischen Fachpraxis in Vöcklabruck verbinde ich jahrelange medizinische Erfahrung mit einem modernen, patientenorientierten Ansatz. Mein Ziel ist es, Ihnen umfassende Diagnostik und Therapie in einer vertrauensvollen Atmosphäre zu bieten.</p>
+        <p>Mit Schwerpunkten in Endokrinologie, Diabetologie und kardiologischer Spezifizierung stehe ich Ihnen bei einem breiten Spektrum internistischer Erkrankungen zur Seite – einfühlsam, ganzheitlich und auf dem neuesten Stand der Medizin.</p>
+        <ul class="about-text-list">
+          <li>
+            <span class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Fachärztin für Innere Medizin mit umfassender Expertise
+          </li>
+          <li>
+            <span class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Spezialisiert auf Endokrinologie &amp; Diabetologie
+          </li>
+          <li>
+            <span class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Kardiologische Spezifizierung &amp; Vorsorge
+          </li>
+          <li>
+            <span class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Alle Krankenkassen – ohne Mehrkosten
+          </li>
+          <li>
+            <span class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Barrierefreier Zugang, Erdgeschoss – zentral in Vöcklabruck
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ LEISTUNGEN ══════════════════════════════════════════════ -->
-<section id="leistungen">
-  <div class="container">
-    <div class="leistungen-header">
-      <div class="section-tag">Meine Leistungen</div>
-      <h2 class="section-title">Was ich für Sie tun kann</h2>
-      <p class="section-lead">
-        Als Internistin mit drei medizinischen Schwerpunkten biete ich Ihnen ein breites diagnostisches und therapeutisches Spektrum an einem Ort.
-      </p>
+<!-- ══ LEISTUNGEN ════════════════════════════════════════════ -->
+<section class="sec" id="leistungen">
+  <div class="con">
+    <div class="leist-header reveal">
+      <div class="sec-tag"><span class="sec-num">02</span> Meine Leistungen</div>
+      <h2 class="sec-h2">Was ich für Sie tun kann</h2>
+      <p class="sec-lead">Als Internistin mit drei medizinischen Schwerpunkten biete ich Ihnen ein breites diagnostisches und therapeutisches Spektrum an einem Ort.</p>
     </div>
 
-    <div class="leistungen-grid">
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">🩺</div>
+    <div class="bento">
+      <!-- Card 1 – featured large -->
+      <div class="bento-card featured b1 reveal">
+        <div class="bento-num">01 — Fachschwerpunkt</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
         <h3>Innere Medizin</h3>
-        <p>Umfassende internistische Diagnostik und Therapie – von der Vorsorgeuntersuchung bis zur Behandlung chronischer Erkrankungen.</p>
-        <span class="leistung-tag">Fachschwerpunkt</span>
+        <p>Umfassende internistische Diagnostik und Therapie – von der Vorsorgeuntersuchung bis zur Behandlung chronischer Erkrankungen auf höchstem medizinischen Niveau.</p>
+        <span class="bento-pill">Fachschwerpunkt</span>
       </div>
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">🧬</div>
+
+      <!-- Card 2 -->
+      <div class="bento-card b2 reveal">
+        <div class="bento-num">02 — Spezialisierung</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
         <h3>Endokrinologie</h3>
         <p>Diagnose und Behandlung von Hormonstörungen: Schilddrüse, Nebenniere, Hypophyse und weitere endokrine Erkrankungen.</p>
-        <span class="leistung-tag">Spezialisierung</span>
+        <span class="bento-pill">Spezialisierung</span>
       </div>
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">💉</div>
+
+      <!-- Card 3 -->
+      <div class="bento-card b3 reveal">
+        <div class="bento-num">03 — Spezialisierung</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
         <h3>Diabetologie</h3>
         <p>Individuelle Betreuung bei Typ-1 und Typ-2 Diabetes: Einstellung, Schulung, Therapieoptimierung und Langzeitbegleitung.</p>
-        <span class="leistung-tag">Spezialisierung</span>
+        <span class="bento-pill">Spezialisierung</span>
       </div>
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">❤️</div>
-        <h3>Kardiologie</h3>
-        <p>Kardiologische Spezifizierung: EKG, Blutdruckdiagnostik, Risikobewertung und Prävention von Herzerkrankungen.</p>
-        <span class="leistung-tag">Spezialisierung</span>
-      </div>
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">🔬</div>
-        <h3>Labordiagnostik</h3>
-        <p>Moderne Blut- und Laboruntersuchungen zur schnellen und präzisen Diagnose – direkt in der Praxis oder mit Laborpartnern.</p>
-        <span class="leistung-tag">Service</span>
-      </div>
-      <div class="leistung-card fade-in">
-        <div class="leistung-icon">📋</div>
-        <h3>Vorsorge & Check-up</h3>
-        <p>Präventive Gesundheitsuntersuchungen, Risikoscreenings und persönliche Beratung zur Erhaltung Ihrer Gesundheit.</p>
-        <span class="leistung-tag">Prävention</span>
-      </div>
-    </div>
 
-    <div class="kassen-banner fade-in">
-      <div class="kassen-text">
-        <h3>Alle Krankenkassen willkommen</h3>
-        <p>Ich behandle Patientinnen und Patienten aller österreichischen Krankenkassen ohne zusätzliche Kosten.</p>
+      <!-- Card 4 -->
+      <div class="bento-card b4 reveal">
+        <div class="bento-num">04 — Spezialisierung</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Kardiologie</h3>
+        <p>EKG, Blutdruckdiagnostik, Risikobewertung und Prävention von Herzerkrankungen.</p>
+        <span class="bento-pill">Spezialisierung</span>
       </div>
-      <div class="kassen-badge">✓ Alle Kassen!</div>
+
+      <!-- Card 5 -->
+      <div class="bento-card b5 reveal">
+        <div class="bento-num">05 — Service</div>
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0H5a2 2 0 00-2 2v3a2 2 0 002 2h4m0-5h4m0 0v5a2 2 0 002 2h4a2 2 0 002-2v-3a2 2 0 00-2-2h-4m-4 0V3m4 11h2"/></svg>
+        </div>
+        <h3>Labordiagnostik</h3>
+        <p>Moderne Blut- und Laboruntersuchungen für schnelle, präzise Diagnosen.</p>
+        <span class="bento-pill">Service</span>
+      </div>
+
+      <!-- Kassen banner -->
+      <div class="bento-card bento-kassen reveal">
+        <div>
+          <div class="bento-kassen-t">Alle Krankenkassen willkommen</div>
+          <div class="bento-kassen-s">Ich behandle Patientinnen und Patienten aller österreichischen Krankenkassen ohne zusätzliche Kosten.</div>
+        </div>
+        <div class="bento-kassen-badge">✓ Alle Kassen!</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ ÖFFNUNGSZEITEN ══════════════════════════════════════════ -->
-<section id="oeffnungszeiten">
-  <div class="container">
-    <div class="section-tag">Wann wir für Sie da sind</div>
-    <h2 class="section-title" style="margin-bottom:48px">Öffnungszeiten</h2>
+<!-- ══ ÖFFNUNGSZEITEN ════════════════════════════════════════ -->
+<section class="sec" id="oeffnungszeiten">
+  <div class="con">
+    <div class="sec-tag reveal"><span class="sec-num">03</span> Wann wir für Sie da sind</div>
+    <h2 class="sec-h2 reveal" style="margin-bottom:48px">Öffnungszeiten</h2>
 
-    <div class="stunden-grid">
-      <div>
-        <div class="stunden-table">
-          <div class="stunden-row" id="row-mo">
-            <span class="stunden-day">Montag</span>
-            <span class="stunden-time">11:00 – 16:00 Uhr</span>
+    <div class="hours-layout">
+      <!-- Table -->
+      <div class="reveal">
+        <div class="hours-card">
+          <div class="hours-header-card">
+            <h3>Wöchentliche Sprechzeiten</h3>
+            <div class="hours-status" id="openStatus">
+              <span class="hours-status-dot"></span>
+              <span id="openStatusText">–</span>
+            </div>
           </div>
-          <div class="stunden-row" id="row-di">
-            <span class="stunden-day">Dienstag</span>
-            <span class="stunden-time">08:00 – 12:00<br>13:00 – 16:00 Uhr</span>
+          <div class="hours-row" id="row-mo">
+            <span class="hours-day">Montag</span>
+            <span class="hours-time">11:00 – 16:00 Uhr</span>
           </div>
-          <div class="stunden-row" id="row-mi">
-            <span class="stunden-day">Mittwoch</span>
-            <span class="stunden-time">08:00 – 12:00 Uhr</span>
+          <div class="hours-row" id="row-di">
+            <span class="hours-day">Dienstag</span>
+            <span class="hours-time">08:00 – 12:00<br>13:00 – 16:00 Uhr</span>
           </div>
-          <div class="stunden-row" id="row-do">
-            <span class="stunden-day">Donnerstag</span>
-            <span class="stunden-closed">geschlossen</span>
+          <div class="hours-row" id="row-mi">
+            <span class="hours-day">Mittwoch</span>
+            <span class="hours-time">08:00 – 12:00 Uhr</span>
           </div>
-          <div class="stunden-row" id="row-fr">
-            <span class="stunden-day">Freitag</span>
-            <span class="stunden-time">08:00 – 12:00 Uhr</span>
+          <div class="hours-row" id="row-do">
+            <span class="hours-day">Donnerstag</span>
+            <span class="hours-closed-text">geschlossen</span>
           </div>
-          <div class="stunden-row" id="row-sa">
-            <span class="stunden-day">Samstag & Sonntag</span>
-            <span class="stunden-closed">geschlossen</span>
+          <div class="hours-row" id="row-fr">
+            <span class="hours-day">Freitag</span>
+            <span class="hours-time">08:00 – 12:00 Uhr</span>
+          </div>
+          <div class="hours-row" id="row-sa">
+            <span class="hours-day">Samstag &amp; Sonntag</span>
+            <span class="hours-closed-text">geschlossen</span>
           </div>
         </div>
 
-        <div class="stunden-notice">
-          <span class="stunden-notice-icon">⚠️</span>
+        <div class="hours-notice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <p><strong>Hinweis:</strong> Die Praxis kann an einzelnen Tagen aufgrund von Urlaub, Fortbildung oder besonderen Umständen geschlossen sein. Bitte rufen Sie vorab an oder prüfen Sie aktuelle Meldungen.</p>
         </div>
       </div>
 
-      <div class="stunden-info">
-        <div class="stunden-info-card">
-          <h4>📞 Telefonische Erreichbarkeit</h4>
+      <!-- Info cards -->
+      <div class="hours-info-col">
+        <div class="hours-info-item reveal">
+          <div class="hours-info-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h4>Telefonische Erreichbarkeit</h4>
           <p>Für Termine und Auskünfte erreichen Sie uns während der Öffnungszeiten:</p>
           <a href="tel:0767233544">07672 33 5 44</a>
         </div>
-        <div class="stunden-info-card">
-          <h4>📍 Standort</h4>
-          <p>
-            Robert-Kunz-Straße 11<br>
-            4840 Vöcklabruck<br>
-            Apotheke Schöndorf / Erdgeschoss<br><br>
-            <strong>Barrierefreier Zugang</strong> im Erdgeschoss
-          </p>
+        <div class="hours-info-item reveal">
+          <div class="hours-info-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Standort</h4>
+          <p>Robert-Kunz-Straße 11<br>4840 Vöcklabruck<br>Apotheke Schöndorf, Erdgeschoss<br><br><strong>Barrierefreier Zugang</strong> im Erdgeschoss</p>
         </div>
-        <div class="stunden-info-card">
-          <h4>🚗 Anfahrt & Parken</h4>
-          <p>Die Praxis befindet sich im Erdgeschoss der Apotheke Schöndorf. Parkplätze sind in der unmittelbaren Umgebung vorhanden.</p>
+        <div class="hours-info-item reveal">
+          <div class="hours-info-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h4>Anfahrt &amp; Parken</h4>
+          <p>Die Praxis befindet sich im Erdgeschoss der Apotheke Schöndorf. Parkplätze sind in unmittelbarer Umgebung vorhanden.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ KONTAKT ════════════════════════════════════════════════ -->
-<section id="kontakt">
-  <div class="container">
-    <div class="section-tag">So finden Sie uns</div>
-    <h2 class="section-title" style="margin-bottom:48px">Kontakt & <span>Anfahrt</span></h2>
+<!-- ══ KONTAKT ════════════════════════════════════════════════ -->
+<section class="sec" id="kontakt">
+  <div class="con">
+    <div class="sec-tag reveal"><span class="sec-num">04</span> So finden Sie uns</div>
+    <h2 class="sec-h2 reveal" style="margin-bottom:48px">Kontakt &amp; <em>Anfahrt</em></h2>
 
     <div class="kontakt-grid">
-      <div class="kontakt-info">
-        <div class="kontakt-item fade-in">
-          <div class="kontakt-item-icon">📍</div>
-          <div class="kontakt-item-content">
-            <label>Adresse</label>
-            <p>Robert-Kunz-Straße 11<br>4840 Vöcklabruck<br>Apotheke Schöndorf, Erdgeschoss</p>
+      <div class="kontakt-items">
+        <div class="kontakt-item reveal">
+          <div class="kontakt-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="kontakt-item-label">Adresse</div>
+            <div class="kontakt-item-val">Robert-Kunz-Straße 11<br>4840 Vöcklabruck<br>Apotheke Schöndorf, Erdgeschoss</div>
           </div>
         </div>
-        <div class="kontakt-item fade-in">
-          <div class="kontakt-item-icon">📞</div>
-          <div class="kontakt-item-content">
-            <label>Telefon</label>
-            <a href="tel:0767233544">07672 33 5 44</a>
+        <div class="kontakt-item reveal">
+          <div class="kontakt-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.2 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="kontakt-item-label">Telefon</div>
+            <div class="kontakt-item-val"><a href="tel:0767233544">07672 33 5 44</a></div>
           </div>
         </div>
-        <div class="kontakt-item fade-in">
-          <div class="kontakt-item-icon">🌐</div>
-          <div class="kontakt-item-content">
-            <label>Website</label>
-            <a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a>
+        <div class="kontakt-item reveal">
+          <div class="kontakt-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div>
+            <div class="kontakt-item-label">Website</div>
+            <div class="kontakt-item-val"><a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a></div>
           </div>
         </div>
-        <div class="kontakt-item fade-in">
-          <div class="kontakt-item-icon">🏥</div>
-          <div class="kontakt-item-content">
-            <label>Fachrichtung</label>
-            <p>Innere Medizin · Endokrinologie<br>Diabetologie · Kardiologie</p>
+        <div class="kontakt-item reveal">
+          <div class="kontakt-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-        </div>
-        <div class="kontakt-item fade-in">
-          <div class="kontakt-item-icon">✅</div>
-          <div class="kontakt-item-content">
-            <label>Krankenkassen</label>
-            <p>Alle österreichischen Krankenkassen werden akzeptiert.</p>
+          <div>
+            <div class="kontakt-item-label">Krankenkassen</div>
+            <div class="kontakt-item-val">Alle österreichischen Krankenkassen werden akzeptiert.</div>
           </div>
         </div>
       </div>
 
-      <div class="kontakt-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2671.0!2d13.6540!3d47.9960!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4774ef7da8d0d6b1%3A0x3af2dfad9c9e0bfd!2sRobert-Kunz-Stra%C3%9Fe%2011%2C%204840%20V%C3%B6cklabruck!5e0!3m2!1sde!2sat!4v1688000000000!5m2!1sde!2sat"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Praxis Dr. Guggenberger auf Google Maps"
-        ></iframe>
+      <div>
+        <div class="kontakt-map reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2671.0!2d13.6540!3d47.9960!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4774ef7da8d0d6b1%3A0x3af2dfad9c9e0bfd!2sRobert-Kunz-Stra%C3%9Fe%2011%2C%204840%20V%C3%B6cklabruck!5e0!3m2!1sde!2sat!4v1688000000000!5m2!1sde!2sat"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Praxis Dr. Guggenberger auf Google Maps"
+          ></iframe>
+        </div>
       </div>
     </div>
 
-    <div class="kontakt-form-section fade-in">
-      <h3>Termin anfragen</h3>
-      <p>Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen. Für dringende Anliegen rufen Sie bitte direkt an.</p>
+    <!-- Appointment form -->
+    <div class="kontakt-form-wrap reveal">
+      <div class="form-head">
+        <h3>Termin anfragen</h3>
+        <p>Füllen Sie das Formular aus, wir melden uns schnellstmöglich bei Ihnen. Für dringende Anliegen rufen Sie bitte direkt an.</p>
+      </div>
       <form onsubmit="handleFormSubmit(event)">
         <div class="form-grid">
-          <div class="form-group">
+          <div class="fg">
             <label for="fname">Vorname *</label>
             <input type="text" id="fname" name="fname" placeholder="Maria" required />
           </div>
-          <div class="form-group">
+          <div class="fg">
             <label for="lname">Nachname *</label>
             <input type="text" id="lname" name="lname" placeholder="Mustermann" required />
           </div>
-          <div class="form-group">
+          <div class="fg">
             <label for="phone">Telefonnummer *</label>
             <input type="tel" id="phone" name="phone" placeholder="0664 123 45 67" required />
           </div>
-          <div class="form-group">
+          <div class="fg">
             <label for="email">E-Mail (optional)</label>
             <input type="email" id="email" name="email" placeholder="maria@beispiel.at" />
           </div>
-          <div class="form-group">
+          <div class="fg">
             <label for="grund">Anliegen</label>
             <select id="grund" name="grund">
               <option value="">Bitte wählen…</option>
@@ -1588,17 +1990,18 @@
               <option>Sonstiges</option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="fg">
             <label for="wunschtermin">Wunschtermin</label>
             <input type="date" id="wunschtermin" name="wunschtermin" />
           </div>
-          <div class="form-group full">
+          <div class="fg full">
             <label for="nachricht">Nachricht (optional)</label>
             <textarea id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen…"></textarea>
           </div>
-          <div class="form-group full form-submit">
-            <button type="submit" class="btn-form">
-              ✉️ Anfrage absenden
+          <div class="fg full">
+            <button type="submit" class="btn-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Anfrage absenden
             </button>
           </div>
         </div>
@@ -1607,99 +2010,114 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="nav-logo" style="text-decoration:none;">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-          </svg>
-        </div>
-        <div class="nav-logo-text">
-          <span class="nav-logo-name">Dr. Anita Guggenberger</span>
-          <span class="nav-logo-title">Fachärztin für Innere Medizin</span>
-        </div>
-      </a>
-      <p>Internistin mit Spezialisierung auf Endokrinologie, Diabetologie und Kardiologie in Vöcklabruck. Alle Kassen willkommen.</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-brand-logo">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3V8zM4 8a6 6 0 1 0 12 0 6 6 0 0 0-12 0z"/></svg>
+          </div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">Dr. Anita Guggenberger</span>
+            <span class="nav-logo-sub">Fachärztin · Innere Medizin</span>
+          </div>
+        </a>
+        <p>Internistin mit Spezialisierung auf Endokrinologie, Diabetologie und Kardiologie in Vöcklabruck. Alle Kassen willkommen.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#ueber-mich">Über mich</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+          <li><a href="#kontakt">Kontakt &amp; Anfahrt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:0767233544">07672 33 5 44</a></li>
+          <li><a href="#kontakt">Robert-Kunz-Str. 11</a></li>
+          <li><a href="#kontakt">4840 Vöcklabruck</a></li>
+          <li><a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#ueber-mich">Über mich</a></li>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-        <li><a href="#kontakt">Kontakt & Anfahrt</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Kontakt</h4>
-      <ul>
-        <li><a href="tel:0767233544">07672 33 5 44</a></li>
-        <li><a href="#">Robert-Kunz-Str. 11</a></li>
-        <li><a href="#">4840 Vöcklabruck</a></li>
-        <li><a href="https://internist-voecklabruck.at">internist-voecklabruck.at</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Dr. Anita Guggenberger · Alle Rechte vorbehalten</span>
-    <div style="display:flex;gap:20px;">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+    <div class="footer-bottom">
+      <span>© 2025 Dr. Anita Guggenberger · Alle Rechte vorbehalten</span>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- Scroll to top button -->
-<button class="scroll-top" id="scrollTop" aria-label="Nach oben scrollen">↑</button>
+<!-- Scroll to top -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Nach oben scrollen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script>
-  // ── NAV scroll effect ─────────────────────────────────────────
+  /* ── Nav light/dark ─────────────────────────────────── */
   const navbar = document.getElementById('navbar');
-  const scrollTopBtn = document.getElementById('scrollTop');
+  const scrollBtn = document.getElementById('scrollTopBtn');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-      scrollTopBtn.classList.add('visible');
-    } else {
-      navbar.classList.remove('scrolled');
-      scrollTopBtn.classList.remove('visible');
-    }
+    const past = window.scrollY > window.innerHeight * 0.7;
+    navbar.classList.toggle('light', past);
+    scrollBtn.classList.toggle('show', window.scrollY > 400);
   });
 
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // ── Hamburger menu ────────────────────────────────────────────
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  /* ── Hamburger ──────────────────────────────────────── */
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
+  ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  // ── Intersection Observer (fade-in) ───────────────────────────
-  const observer = new IntersectionObserver((entries) => {
+  /* ── Reveal on scroll ───────────────────────────────── */
+  const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+        e.target.classList.add('in');
+        revealObserver.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // ── Today's hours ─────────────────────────────────────────────
-  const hours = {
+  /* ── Counter animation ──────────────────────────────── */
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      if (isNaN(target)) return;
+      let start = 0;
+      const duration = 1400;
+      const step = timestamp => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+  /* ── Today's hours ──────────────────────────────────── */
+  const HOURS = {
     1: '11:00 – 16:00 Uhr',
     2: '08:00–12:00 & 13:00–16:00',
     3: '08:00 – 12:00 Uhr',
@@ -1709,21 +2127,30 @@
     0: 'Heute geschlossen',
   };
 
-  const rowIds = { 1:'row-mo', 2:'row-di', 3:'row-mi', 4:'row-do', 5:'row-fr' };
+  const ROW_IDS = { 1: 'row-mo', 2: 'row-di', 3: 'row-mi', 4: 'row-do', 5: 'row-fr' };
   const day = new Date().getDay();
+  const isOpen = [1,2,3,5].includes(day);
 
-  document.getElementById('todayHours').textContent = hours[day] ?? 'Heute geschlossen';
+  document.getElementById('todayHours').textContent = HOURS[day] ?? 'Heute geschlossen';
 
-  if (rowIds[day]) {
-    document.getElementById(rowIds[day])?.classList.add('today');
+  const statusEl = document.getElementById('openStatus');
+  const statusText = document.getElementById('openStatusText');
+  statusEl.className = 'hours-status ' + (isOpen ? 'open' : 'closed');
+  statusText.textContent = isOpen ? 'Heute geöffnet' : 'Heute geschlossen';
+
+  if (ROW_IDS[day]) {
+    document.getElementById(ROW_IDS[day])?.classList.add('today');
   }
 
-  // ── Form submit ───────────────────────────────────────────────
+  /* ── Form submit ────────────────────────────────────── */
   function handleFormSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.btn-form');
-    btn.textContent = '✅ Anfrage gesendet – wir melden uns bald!';
-    btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+    const btn = e.target.querySelector('.btn-submit');
+    btn.innerHTML = `
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Anfrage gesendet – wir melden uns bald!
+    `;
+    btn.style.background = 'linear-gradient(135deg, #1a8a4a, #27ae60)';
     btn.disabled = true;
   }
 </script>
